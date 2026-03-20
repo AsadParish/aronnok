@@ -2,11 +2,105 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shop</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* ── Homepage link ── */
+  .home-link-bar {
+    text-align: center;
+    padding: 10px 16px;
+    background: #f5f5f0;
+    border-bottom: 1px solid #ddd;
+  }
+  .home-link-bar.bottom {
+    border-bottom: none;
+    border-top: 1px solid #ddd;
+    margin-top: 32px;
+  }
+  .home-link-bar a {
+    color: #2e7d32;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: opacity 0.2s;
+  }
+  .home-link-bar a:hover { opacity: 0.75; }
+
+  /* ── Product image — clickable ── */
+  .product img {
+    cursor: zoom-in;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .product img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
+  }
+
+  /* ── Lightbox overlay ── */
+  #lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.82);
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    cursor: zoom-out;
+  }
+  #lightbox.open { display: flex; }
+
+  #lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 8px 48px rgba(0,0,0,0.5);
+    cursor: default;
+    animation: lb-pop 0.2s ease;
+  }
+  @keyframes lb-pop {
+    from { transform: scale(0.88); opacity: 0; }
+    to   { transform: scale(1);    opacity: 1; }
+  }
+
+  #lightbox-caption {
+    position: fixed;
+    bottom: 28px;
+    left: 0; right: 0;
+    text-align: center;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+  }
+
+  #lightbox-close {
+    position: fixed;
+    top: 18px; right: 22px;
+    font-size: 28px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.15s;
+  }
+  #lightbox-close:hover { opacity: 1; }
+</style>
 </head>
 
 <body>
+
+<!-- ── Top homepage link ── -->
+<div class="home-link-bar">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
 
 <header class="nav">
   <h2>Shop</h2>
@@ -18,7 +112,20 @@
   </div>
 </section>
 
+<!-- ── Bottom homepage link ── -->
+<div class="home-link-bar bottom">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+<!-- ── Lightbox ── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Product image">
+  <button id="lightbox-close" aria-label="Close image">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+  <div id="lightbox-caption"></div>
+</div>
+
 <script>
+/* ── Load products ── */
 fetch('products.json')
   .then(response => response.json())
   .then(products => {
@@ -26,10 +133,9 @@ fetch('products.json')
     const container = document.getElementById('productContainer');
 
     products.forEach(p => {
-
       const card = `
         <div class="product">
-          <img src="${p.image}" alt="${p.name}">
+          <img src="${p.image}" alt="${p.name}" class="lightbox-trigger" data-caption="${p.name}">
           <div class="product-info">
             <h3>${p.name}</h3>
             <p>${p.price}</p>
@@ -37,14 +143,58 @@ fetch('products.json')
           </div>
         </div>
       `;
-
       container.innerHTML += card;
     });
 
+    attachLightbox();
   })
   .catch(err => {
     console.error("Error loading products:", err);
   });
+
+/* ── Lightbox logic ── */
+function attachLightbox() {
+  const lightbox    = document.getElementById('lightbox');
+  const lbImg       = document.getElementById('lightbox-img');
+  const lbCaption   = document.getElementById('lightbox-caption');
+  const lbClose     = document.getElementById('lightbox-close');
+
+  function openLightbox(src, caption) {
+    lbImg.src = src;
+    lbImg.alt = caption;
+    lbCaption.textContent = caption;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Click on any product image
+  document.querySelectorAll('.lightbox-trigger').forEach(img => {
+    img.addEventListener('click', () => {
+      openLightbox(img.src, img.getAttribute('data-caption') || img.alt);
+    });
+  });
+
+  // Close on overlay click
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Close button
+  lbClose.addEventListener('click', closeLightbox);
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Prevent image click from closing
+  lbImg.addEventListener('click', e => e.stopPropagation());
+}
 </script>
 
 </body>

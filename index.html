@@ -5,6 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aranyak</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── Logo area ── */
+  header.nav .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+  header.nav .logo img {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.2;
+  }
+  .brand-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #2e7d32;
+    letter-spacing: -0.01em;
+  }
+  .brand-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6b8c6b;
+    letter-spacing: 0.06em;
+    font-style: italic;
+  }
+
+  /* ── Nav boxes ── */
+  header.nav nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  header.nav nav a {
+    display: inline-block;
+    padding: 7px 18px;
+    border: 1.5px solid #2e7d32;
+    border-radius: 6px;
+    color: #2e7d32;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  header.nav nav a:hover,
+  header.nav nav a.active {
+    background: #2e7d32;
+    color: #fff;
+  }
+</style>
 </head>
 
 <body>
@@ -13,7 +74,10 @@
 <header class="nav">
   <div class="logo">
     <img src="assets/logo.png" alt="Aranyak Logo">
-    <span>Aranyak</span>
+    <div class="brand-text">
+      <span class="brand-name">Aronnok</span>
+      <span class="brand-tagline">Rooted in Nature, Made for You</span>
+    </div>
   </div>
 
   <nav>

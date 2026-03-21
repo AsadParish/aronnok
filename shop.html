@@ -36,16 +36,32 @@
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin: 4px 0;
+    margin: 4px 0 10px;
+    /* force it onto its own line regardless of parent flex */
+    width: 100%;
+    flex-shrink: 0;
   }
   .price-current {
     font-weight: 600;
     color: #2e7d32;
+    white-space: nowrap;
   }
   .price-original {
     color: #999;
     text-decoration: line-through;
     font-size: 0.9em;
+    white-space: nowrap;
+  }
+
+  /* ── Product info — stack vertically, button pushed right ── */
+  .product-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .product-info .btn-secondary {
+    align-self: flex-end;
+    margin-top: 4px;
   }
 
   /* ── Product image — clickable ── */

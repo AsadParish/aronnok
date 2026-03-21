@@ -30,6 +30,24 @@
   }
   .home-link-bar a:hover { opacity: 0.75; }
 
+  /* ── Price display ── */
+  .price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 4px 0;
+  }
+  .price-current {
+    font-weight: 600;
+    color: #2e7d32;
+  }
+  .price-original {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 0.9em;
+  }
+
   /* ── Product image — clickable ── */
   .product img {
     cursor: zoom-in;
@@ -75,7 +93,6 @@
     text-align: center;
     color: rgba(255,255,255,0.85);
     font-size: 14px;
-    letter-spacing: 0.02em;
     pointer-events: none;
   }
 
@@ -133,16 +150,25 @@ fetch('products.json')
     const container = document.getElementById('productContainer');
 
     products.forEach(p => {
+
+      const originalPriceHTML = p.originalPrice
+        ? `<span class="price-original">(${p.originalPrice})</span>`
+        : '';
+
       const card = `
         <div class="product">
           <img src="${p.image}" alt="${p.name}" class="lightbox-trigger" data-caption="${p.name}">
           <div class="product-info">
             <h3>${p.name}</h3>
-            <p>${p.price}</p>
+            <div class="price-row">
+              <span class="price-current">${p.price}</span>
+              ${originalPriceHTML}
+            </div>
             <a href="https://wa.me/8801777634120?text=I%20want%20${encodeURIComponent(p.name)}" class="btn-secondary">Order</a>
           </div>
         </div>
       `;
+
       container.innerHTML += card;
     });
 
@@ -154,10 +180,10 @@ fetch('products.json')
 
 /* ── Lightbox logic ── */
 function attachLightbox() {
-  const lightbox    = document.getElementById('lightbox');
-  const lbImg       = document.getElementById('lightbox-img');
-  const lbCaption   = document.getElementById('lightbox-caption');
-  const lbClose     = document.getElementById('lightbox-close');
+  const lightbox  = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lightbox-img');
+  const lbCaption = document.getElementById('lightbox-caption');
+  const lbClose   = document.getElementById('lightbox-close');
 
   function openLightbox(src, caption) {
     lbImg.src = src;
@@ -172,27 +198,22 @@ function attachLightbox() {
     document.body.style.overflow = '';
   }
 
-  // Click on any product image
   document.querySelectorAll('.lightbox-trigger').forEach(img => {
     img.addEventListener('click', () => {
       openLightbox(img.src, img.getAttribute('data-caption') || img.alt);
     });
   });
 
-  // Close on overlay click
   lightbox.addEventListener('click', e => {
     if (e.target === lightbox) closeLightbox();
   });
 
-  // Close button
   lbClose.addEventListener('click', closeLightbox);
 
-  // Close on Escape key
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // Prevent image click from closing
   lbImg.addEventListener('click', e => e.stopPropagation());
 }
 </script>

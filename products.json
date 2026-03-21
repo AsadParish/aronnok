@@ -2,16 +2,19 @@
   {
     "name": "Peace Lily",
     "price": "300 BDT",
+    "originalPrice": "550 BDT",
     "image": "assets/p2.jpg"
   },
   {
     "name": "Money Plant",
     "price": "250 BDT",
+    "originalPrice": "480 BDT",
     "image": "assets/p1.jpg"
   },
-   {
+  {
     "name": "Brazil",
     "price": "320 BDT",
+    "originalPrice": "600 BDT",
     "image": "assets/p3.jpg"
   }
 ]

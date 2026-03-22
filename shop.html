@@ -55,10 +55,11 @@
 
   /* ── Discount badge ── */
   .discount-badge {
-    display: inline-block;
+    display: block;
     font-size: 11px;
     color: #b85c00;
     margin: 2px 0 6px;
+    width: 100%;
   }
 
   /* ── Product info — stack vertically, button pushed right ── */
@@ -480,8 +481,8 @@ fetch('products.json')
       // Auto-calculate discount
       let discountHTML = '';
       if (p.originalPrice) {
-        const current  = parseFloat(p.price);
-        const original = parseFloat(p.originalPrice);
+        const current  = parseFloat(String(p.price).replace(/[^\d.]/g, ''));
+        const original = parseFloat(String(p.originalPrice).replace(/[^\d.]/g, ''));
         if (!isNaN(current) && !isNaN(original) && original > current) {
           const saved   = Math.round(original - current);
           const percent = Math.round((saved / original) * 100);

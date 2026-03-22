@@ -3,18 +3,85 @@
     "name": "Peace Lily",
     "price": "300 BDT",
     "originalPrice": "550 BDT",
-    "image": "assets/p2.jpg"
+    "image": "assets/Peace_Lily_00.png",
+    "images": [
+      "assets/Peace_Lily_00.png",
+      "assets/Peace_Lily_01.png",
+      "assets/Peace_Lily_02.png"
+    ]
   },
   {
-    "name": "Money Plant",
-    "price": "250 BDT",
-    "originalPrice": "480 BDT",
-    "image": "assets/p1.jpg"
-  },
-  {
-    "name": "Brazil",
+    "name": "Ball Aralia",
     "price": "320 BDT",
+    "originalPrice": "580 BDT",
+    "image": "assets/Ball_Aralia_00.png",
+    "images": [
+      "assets/Ball_Aralia_00.png",
+      "assets/Ball_Aralia_01.png",
+      "assets/Ball_Aralia_02.png"
+    ]
+  },
+  {
+    "name": "Ball Kamini",
+    "price": "280 BDT",
+    "originalPrice": "500 BDT",
+    "image": "assets/Ball_Kamini_00.png",
+    "images": [
+      "assets/Ball_Kamini_00.png",
+      "assets/Ball_Kamini_01.png"
+    ]
+  },
+  {
+    "name": "Calathea Picturata",
+    "price": "350 BDT",
+    "originalPrice": "620 BDT",
+    "image": "assets/Calathea_Picturata_00.png",
+    "images": [
+      "assets/Calathea_Picturata_00.png",
+      "assets/Calathea_Picturata_01.png",
+      "assets/Calathea_Picturata_02.png",
+      "assets/Calathea_Picturata_03.png"
+    ]
+  },
+  {
+    "name": "Goeppertia Bachemiana",
+    "price": "330 BDT",
+    "originalPrice": "590 BDT",
+    "image": "assets/Goeppertia_Bachemiana_00.png",
+    "images": [
+      "assets/Goeppertia_Bachemiana_00.png",
+      "assets/Goeppertia_Bachemiana_01.png"
+    ]
+  },
+  {
+    "name": "Leopard Lily",
+    "price": "290 BDT",
+    "originalPrice": "520 BDT",
+    "image": "assets/Leopard_Lily_00.png",
+    "images": [
+      "assets/Leopard_Lily_00.png"
+    ]
+  },
+  {
+    "name": "Mexican Sword Plant",
+    "price": "310 BDT",
+    "originalPrice": "560 BDT",
+    "image": "assets/Mexican_Sword_Plant_00.png",
+    "images": [
+      "assets/Mexican_Sword_Plant_00.png",
+      "assets/Mexican_Sword_Plant_01.png",
+      "assets/Mexican_Sword_Plant_02.png",
+      "assets/Mexican_Sword_Plant_03.png"
+    ]
+  },
+  {
+    "name": "Philodendron Burle Marx",
+    "price": "340 BDT",
     "originalPrice": "600 BDT",
-    "image": "assets/p3.jpg"
+    "image": "assets/Philodendron_Burle_Marx_00.png",
+    "images": [
+      "assets/Philodendron_Burle_Marx_00.png",
+      "assets/Philodendron_Burle_Marx_01.png"
+    ]
   }
 ]

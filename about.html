@@ -1,27 +1,278 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Aranyak</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* ── Page layout ── */
+  .about-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+  }
+
+  /* ── Hero title ── */
+  .about-hero {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .about-hero-label {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2e7d32;
+    margin-bottom: 12px;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .about-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 18px;
+    line-height: 1.15;
+  }
+  .about-hero-line {
+    width: 56px;
+    height: 3px;
+    background: #2e7d32;
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  /* ── Two-column bilingual layout ── */
+  .bilingual-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid #e4ede4;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .lang-col {
+    padding: 40px 36px;
+  }
+
+  .lang-col.bangla {
+    background: #f7fbf7;
+    border-right: 1px solid #e4ede4;
+  }
+
+  .lang-col.english {
+    background: #ffffff;
+  }
+
+  /* ── Column header ── */
+  .lang-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddeedd;
+  }
+  .lang-flag {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .lang-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #2e7d32;
+  }
+
+  /* ── Paragraph styling ── */
+  .lang-col p {
+    margin: 0 0 18px;
+    line-height: 1.9;
+    color: #333;
+  }
+  .lang-col.bangla p {
+    font-family: 'Hind Siliguri', 'SolaimanLipi', sans-serif;
+    font-size: 15px;
+  }
+  .lang-col.english p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 300;
+  }
+  .lang-col p:last-child { margin-bottom: 0; }
+
+  /* highlight the closing line */
+  .lang-col p.closing {
+    font-style: italic;
+    color: #2e7d32;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+
+  /* ── Divider between sections ── */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: #e4ede4;
+    margin: 48px 0;
+  }
+
+  /* ── Values strip ── */
+  .values-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 0;
+  }
+  .value-card {
+    text-align: center;
+    padding: 28px 20px;
+    border: 1px solid #e4ede4;
+    border-radius: 10px;
+    background: #f7fbf7;
+    transition: box-shadow 0.2s;
+  }
+  .value-card:hover {
+    box-shadow: 0 4px 16px rgba(46,125,50,0.10);
+  }
+  .value-icon { font-size: 28px; margin-bottom: 10px; }
+  .value-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #2e7d32;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+  .value-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.65;
+  }
+
+  /* ── Back link ── */
+  .back-bar {
+    text-align: center;
+    padding: 10px 16px;
+    background: #f5f5f0;
+    border-bottom: 1px solid #ddd;
+  }
+  .back-bar a {
+    color: #2e7d32;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .back-bar a:hover { opacity: 0.75; }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    .about-wrapper { padding: 40px 20px 60px; }
+    .bilingual-grid { grid-template-columns: 1fr; }
+    .lang-col.bangla { border-right: none; border-bottom: 1px solid #e4ede4; }
+    .values-strip { grid-template-columns: 1fr; }
+    .lang-col { padding: 28px 22px; }
+  }
+
+</style>
 </head>
 
 <body>
 
+<!-- Back to homepage -->
+<div class="back-bar">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+<!-- Nav -->
 <header class="nav">
   <h2>About</h2>
 </header>
 
-<section class="section">
-  <h1>Our Story</h1>
-  <p>Aranyak began from a small balcony in Narayanganj...</p>
+<div class="about-wrapper">
 
-  <h2>Mission</h2>
-  <p>To bring nature into every home.</p>
+  <!-- Hero -->
+  <div class="about-hero">
+    <div class="about-hero-label">Our Story</div>
+    <h1>About Aranyak</h1>
+    <div class="about-hero-line"></div>
+  </div>
 
-  <h2>Founder</h2>
-  <p>Tahmina Akter</p>
-</section>
+  <!-- Bilingual two-column -->
+  <div class="bilingual-grid">
+
+    <!-- BANGLA -->
+    <div class="lang-col bangla">
+      <div class="lang-header">
+        <span class="lang-flag">🇧🇩</span>
+        <span class="lang-label">বাংলা</span>
+      </div>
+
+      <p>শহরের জীবনে আমরা ধীরে ধীরে প্রকৃতি থেকে দূরে সরে যাচ্ছি— কংক্রিট, স্ক্রিন আর ব্যস্ততার ভেতরে হারিয়ে যাচ্ছে সেই সবুজ অনুভূতি। 'আরণ্যক' তৈরি হয়েছে এই দূরত্বটা কমানোর জন্য।</p>
+
+      <p>আমরা শুধু গাছ বা প্ল্যান্টার দিচ্ছি না— আমরা এমন কিছু তৈরি করি, যা আপনার ঘরের এক কোণে ছোট্ট একটা প্রকৃতির অনুভূতি এনে দেয়। প্রতিটি প্ল্যান্টার হাতে তৈরি, যত্ন নিয়ে ডিজাইন করা, যাতে সেটা শুধু একটা পাত্র না হয়ে আপনার স্পেসের অংশ হয়ে যায়।</p>
+
+      <p>আমাদের লক্ষ্য খুব সহজ— ছোট জায়গায়ও যেন মানুষ প্রকৃতির কাছাকাছি থাকতে পারে। একটা টেবিল, একটা জানালার কোণ, কিংবা আপনার কাজের জায়গা— যেখানেই হোক, একটু সবুজ, একটু শান্তি।</p>
+
+      <p class="closing">'আরণ্যক' বিশ্বাস করে— প্রকৃতি বাইরে কোথাও না, আমরা এর অংশ।<br>আমরা সেই অনুভূতিটাকেই আপনার কাছে পৌঁছে দিতে চাই।</p>
+    </div>
+
+    <!-- ENGLISH -->
+    <div class="lang-col english">
+      <div class="lang-header">
+        <span class="lang-flag">🌿</span>
+        <span class="lang-label">English</span>
+      </div>
+
+      <p>In the rhythm of urban life, we are gradually drifting away from nature— surrounded by concrete, screens, and constant busyness, the sense of green is quietly fading. 'Aranyak' was created to bridge that distance.</p>
+
+      <p>We don't just make planters— we create pieces that bring a touch of nature into your everyday space. Each planter is thoughtfully handcrafted and carefully designed, so it becomes more than just a container— it becomes a part of your environment.</p>
+
+      <p>Our goal is simple: to help people feel closer to nature, even within small spaces. A desk, a windowsill, or a quiet corner of your room— wherever it may be, a little green can bring a sense of calm.</p>
+
+      <p class="closing">At 'Aranyak', we believe nature doesn't belong somewhere far away— we belong to it.<br>And that is the feeling we strive to bring to you.</p>
+    </div>
+
+  </div><!-- /bilingual-grid -->
+
+  <div class="section-divider"></div>
+
+  <!-- Values -->
+  <div class="values-strip">
+    <div class="value-card">
+      <div class="value-icon">🎨</div>
+      <div class="value-title">Handcrafted</div>
+      <div class="value-desc">Every planter is individually hand-painted by local artists. No two are the same.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌱</div>
+      <div class="value-title">Low Maintenance</div>
+      <div class="value-desc">Curated for busy urban lives. Each plant comes with a tailored care guide.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">✨</div>
+      <div class="value-title">Aesthetic First</div>
+      <div class="value-desc">Designed to feel like a natural part of your space, not just an add-on.</div>
+    </div>
+  </div>
+
+</div><!-- /about-wrapper -->
+
+<!-- Footer -->
+<footer class="footer">
+  <p>📍 28/1, Missionpara, Narayanganj, Bangladesh</p>
+  <p>📞 +8801777634120 &nbsp;|&nbsp; ✉️ aronnok.bdesh@gmail.com</p>
+</footer>
+
+<!-- WhatsApp float -->
+<a href="https://wa.me/8801777634120" class="whatsapp">💬</a>
 
 </body>
 </html>

@@ -35,7 +35,11 @@ body {
 /* HERO */
 .hero {
   height: 90vh;
-  background: url('assets/hero.jpg') center/cover no-repeat;
+  background-image: url('assets/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e8f0e8; /* fallback if image fails */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,9 +48,10 @@ body {
 .hero-content {
   text-align: center;
   color: white;
-  background: rgba(0,0,0,0.35);
-  padding: 40px;
+  background: rgba(0,0,0,0.45);
+  padding: 40px 60px;
   border-radius: 10px;
+  max-width: 600px;
 }
 
 /* BUTTONS */

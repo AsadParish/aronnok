@@ -7,10 +7,8 @@
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ── Logo area ── */
-  header.nav .logo {
-    display: flex; align-items: center; gap: 14px;
-  }
+  /* ── Logo ── */
+  header.nav .logo { display: flex; align-items: center; gap: 14px; }
   header.nav .logo img { width: 72px; height: 72px; object-fit: contain; }
   .brand-text { display: flex; flex-direction: column; gap: 2px; line-height: 1.2; }
   .brand-name {
@@ -22,14 +20,24 @@
     font-size: 12px; color: #6b8c6b; letter-spacing: 0.06em; font-style: italic;
   }
 
-  /* ── Hero override ── */
+  /* ── Nav boxes ── */
+  header.nav nav { display: flex; gap: 10px; align-items: center; }
+  header.nav nav a {
+    display: inline-block; padding: 7px 18px;
+    border: 1.5px solid #2e7d32; border-radius: 6px;
+    color: #2e7d32; font-size: 14px; font-weight: 600;
+    text-decoration: none; background: transparent;
+    transition: background 0.2s, color 0.2s; white-space: nowrap;
+  }
+  header.nav nav a:hover, header.nav nav a.active { background: #2e7d32; color: #fff; }
+
+  /* ── Hero: two-column, image on right ── */
   .hero {
-    height: auto !important;
-    min-height: 92vh;
-    background: #f4f7f0 !important;
+    min-height: 90vh;
     display: grid !important;
     grid-template-columns: 1fr 1fr;
     align-items: stretch;
+    background: #f4f7f0 !important;
     overflow: hidden;
     padding: 0 !important;
   }
@@ -42,70 +50,40 @@
     color: #1a2e1a;
   }
   .hero-content h1 {
-    font-family: "Playfair Display", Georgia, serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(2.2rem, 3.5vw, 3.2rem);
-    font-weight: 700;
-    line-height: 1.15;
-    color: #1a2e1a;
-    margin: 0 0 18px;
+    font-weight: 700; line-height: 1.15;
+    color: #1a2e1a; margin: 0 0 18px;
   }
   .hero-content p {
-    font-size: 16px;
-    color: #5a7a5a;
-    line-height: 1.7;
-    margin: 0 0 32px;
+    font-size: 16px; color: #5a7a5a;
+    line-height: 1.7; margin: 0 0 32px;
   }
   .hero-content .btn-primary {
-    align-self: flex-start;
-    padding: 14px 32px;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 4px;
+    align-self: flex-start; padding: 14px 32px;
+    font-size: 15px; font-weight: 600; border-radius: 4px;
   }
   .hero-img-panel {
-    position: relative;
-    overflow: hidden;
-    min-height: 500px;
+    position: relative; overflow: hidden; min-height: 500px;
   }
   .hero-img-panel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%; display: block;
   }
   .hero-img-badge {
-    position: absolute;
-    bottom: 28px;
-    left: 28px;
-    background: rgba(255,255,255,0.92);
-    padding: 10px 16px;
-    border-left: 3px solid #2e7d32;
-    font-size: 12px;
-    color: #1a2e1a;
-    font-weight: 500;
+    position: absolute; bottom: 28px; left: 28px;
+    background: rgba(255,255,255,0.92); padding: 10px 16px;
+    border-left: 3px solid #2e7d32; font-size: 12px;
+    color: #1a2e1a; font-weight: 500;
   }
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-content { padding: 60px 24px 40px; text-align: center; }
+    .hero { grid-template-columns: 1fr !important; min-height: auto; }
+    .hero-img-panel { min-height: 260px; order: -1; }
+    .hero-content { padding: 48px 24px 40px; text-align: center; }
     .hero-content .btn-primary { align-self: center; }
-    .hero-img-panel { min-height: 300px; }
   }
 
-  /* ── Nav boxes ── */
-  header.nav nav { display: flex; gap: 10px; align-items: center; }
-  header.nav nav a {
-    display: inline-block; padding: 7px 18px;
-    border: 1.5px solid #2e7d32; border-radius: 6px;
-    color: #2e7d32; font-size: 14px; font-weight: 600;
-    text-decoration: none; background: transparent;
-    transition: background 0.2s, color 0.2s; white-space: nowrap;
-  }
-  header.nav nav a:hover, header.nav nav a.active {
-    background: #2e7d32; color: #fff;
-  }
-
-  /* ── Featured grid: 4 columns ── */
+  /* ── Featured grid ── */
   #featuredProducts {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -113,34 +91,29 @@
   }
   @media (max-width: 1024px) { #featuredProducts { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px)  { #featuredProducts { grid-template-columns: 1fr; } }
-
-  /* ── Card width override ── */
   #featuredProducts .product { width: 100%; }
-
-  /* ── Product info ── */
   #featuredProducts .product-info {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    padding: 14px;
+    display: flex !important; flex-direction: column !important;
+    align-items: flex-start !important; padding: 14px;
   }
-  #featuredProducts .product-info .btn-secondary {
-    align-self: flex-end; margin-top: 8px;
-  }
-
-  /* ── Clickable image ── */
-  #featuredProducts .product img {
-    cursor: zoom-in; transition: transform 0.2s ease;
-  }
+  #featuredProducts .product-info .btn-secondary { align-self: flex-end; margin-top: 8px; }
+  #featuredProducts .product img { cursor: zoom-in; transition: transform 0.2s ease; }
   #featuredProducts .product img:hover { transform: scale(1.02); }
 
-  /* ── Planter line ── */
+  /* ── Price / discount ── */
+  .price-row {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap; margin: 6px 0 2px; width: 100%;
+  }
+  .price-current { font-weight: 600; color: #2e7d32; white-space: nowrap; }
+  .price-original { color: #999; text-decoration: line-through; font-size: 0.9em; white-space: nowrap; }
+  .discount-badge { display: block; font-size: 11px; color: #b85c00; margin: 2px 0 6px; width: 100%; }
+
+  /* ── Planter line & spec btn ── */
   .planter-line {
     font-size: 12px; color: #666; margin: 3px 0 0;
     display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
   }
-
-  /* ── Spec button ── */
   .spec-btn {
     font-size: 11px; font-weight: 600; color: #2e7d32;
     border: 1px solid #2e7d32; border-radius: 4px; padding: 1px 7px;
@@ -148,20 +121,6 @@
     transition: background 0.15s, color 0.15s; white-space: nowrap;
   }
   .spec-btn:hover { background: #2e7d32; color: #fff; }
-
-  /* ── Price row ── */
-  .price-row {
-    display: flex; align-items: center; gap: 8px;
-    flex-wrap: wrap; margin: 6px 0 2px; width: 100%;
-  }
-  .price-current { font-weight: 600; color: #2e7d32; white-space: nowrap; }
-  .price-original { color: #999; text-decoration: line-through; font-size: 0.9em; white-space: nowrap; }
-
-  /* ── Discount badge ── */
-  .discount-badge {
-    display: block; font-size: 11px; color: #b85c00;
-    margin: 2px 0 6px; width: 100%;
-  }
 
   /* ── Spec popup ── */
   .spec-popup {
@@ -172,17 +131,11 @@
     font-size: 13px; line-height: 1.8; color: #333;
   }
   .spec-popup.open { display: block; }
-  .spec-popup-title {
-    font-weight: 700; font-size: 13px; color: #2e7d32;
-    margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 6px;
-  }
+  .spec-popup-title { font-weight: 700; font-size: 13px; color: #2e7d32; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
   .spec-popup table { border-collapse: collapse; width: 100%; }
   .spec-popup td { padding: 2px 6px 2px 0; vertical-align: top; }
   .spec-popup td:first-child { font-weight: 600; color: #555; white-space: nowrap; padding-right: 10px; }
-  .spec-popup-close {
-    position: absolute; top: 8px; right: 10px;
-    background: none; border: none; font-size: 16px; cursor: pointer; color: #999;
-  }
+  .spec-popup-close { position: absolute; top: 8px; right: 10px; background: none; border: none; font-size: 16px; cursor: pointer; color: #999; }
   .spec-popup-close:hover { color: #333; }
 
   /* ── Lightbox ── */
@@ -191,44 +144,22 @@
     background: rgba(0,0,0,0.88); align-items: center; justify-content: center; padding: 24px;
   }
   #lightbox.open { display: flex; }
-  #lightbox-img {
-    max-width: 80vw; max-height: 82vh; object-fit: contain;
-    border-radius: 6px; box-shadow: 0 8px 48px rgba(0,0,0,0.5);
-    cursor: default; animation: lb-pop 0.2s ease;
-  }
+  #lightbox-img { max-width: 80vw; max-height: 82vh; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 48px rgba(0,0,0,0.5); cursor: default; animation: lb-pop 0.2s ease; }
   @keyframes lb-pop { from { transform: scale(0.88); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  #lightbox-close {
-    position: fixed; top: 18px; right: 22px; font-size: 28px; color: #fff;
-    background: none; border: none; cursor: pointer; opacity: 0.8; z-index: 10001;
-  }
+  #lightbox-close { position: fixed; top: 18px; right: 22px; font-size: 28px; color: #fff; background: none; border: none; cursor: pointer; opacity: 0.8; z-index: 10001; }
   #lightbox-close:hover { opacity: 1; }
-  .lb-nav {
-    position: fixed; top: 50%; transform: translateY(-50%);
-    background: rgba(255,255,255,0.15); border: none; color: #fff;
-    font-size: 32px; width: 52px; height: 52px; border-radius: 50%;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    z-index: 10001; transition: background 0.2s; user-select: none;
-  }
+  .lb-nav { position: fixed; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.15); border: none; color: #fff; font-size: 32px; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 10001; transition: background 0.2s; user-select: none; }
   .lb-nav:hover { background: rgba(255,255,255,0.3); }
   .lb-nav.hidden { display: none; }
   #lb-prev { left: 16px; } #lb-next { right: 16px; }
-  #lightbox-footer {
-    position: fixed; bottom: 20px; left: 0; right: 0;
-    display: flex; flex-direction: column; align-items: center;
-    gap: 4px; pointer-events: none; z-index: 10001;
-  }
+  #lightbox-footer { position: fixed; bottom: 20px; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; pointer-events: none; z-index: 10001; }
   #lightbox-caption { color: rgba(255,255,255,0.85); font-size: 14px; }
   #lightbox-counter { color: rgba(255,255,255,0.5); font-size: 12px; }
   #lightbox-dots { display: flex; gap: 6px; margin-top: 2px; pointer-events: all; }
-  .lb-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0;
-    transition: background 0.2s;
-  }
+  .lb-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.35); border: none; cursor: pointer; padding: 0; transition: background 0.2s; }
   .lb-dot.active { background: #fff; }
 </style>
 </head>
-
 <body>
 
 <!-- NAV -->
@@ -247,7 +178,7 @@
   </nav>
 </header>
 
-<!-- HERO -->
+<!-- HERO — image as <img> tag, no background-image -->
 <section class="hero">
   <div class="hero-content">
     <h1>Bring the Forest into Your Home</h1>
@@ -255,8 +186,8 @@
     <a href="shop.html" class="btn-primary">Explore Collection</a>
   </div>
   <div class="hero-img-panel">
-    <img src="assets/hero.png" alt="Aranyak handcrafted planter on a desk">
-    <div class="hero-img-badge">&#9670; Handcrafted in Bangladesh</div>
+    <img src="assets/hero.jpg" alt="Aranyak handcrafted planter on a desk">
+    <div class="hero-img-badge">✦ Handcrafted in Bangladesh</div>
   </div>
 </section>
 
@@ -264,40 +195,65 @@
 <section class="section">
   <h2 class="section-title">Why Aranyak</h2>
   <div class="grid-3">
-    <div class="card-soft">
-      <h3>🌿 Handmade</h3>
-      <p>Every piece is individually crafted by local artists.</p>
-    </div>
-    <div class="card-soft">
-      <h3>🌱 Low Maintenance</h3>
-      <p>Designed for busy urban lifestyles.</p>
-    </div>
-    <div class="card-soft">
-      <h3>🎨 Aesthetic First</h3>
-      <p>Every product curated for visual harmony.</p>
-    </div>
+    <div class="card-soft"><h3>🌿 Handmade</h3><p>Every piece is individually crafted by local artists.</p></div>
+    <div class="card-soft"><h3>🌱 Low Maintenance</h3><p>Designed for busy urban lifestyles.</p></div>
+    <div class="card-soft"><h3>🎨 Aesthetic First</h3><p>Every product curated for visual harmony.</p></div>
   </div>
 </section>
 
-<!-- FEATURED -->
+<!-- FEATURED — all 4 cards static, no fetch() needed -->
 <section class="section">
   <h2 class="section-title">Featured</h2>
   <div id="featuredProducts">
 
-    <!-- JS injects 2 dynamic cards here (prepended before static) -->
-
-    <!-- Static card 1 -->
+    <!-- Card 1: Peace Lily -->
     <div class="product">
-      <img
-        src="assets/4x4x4.75_inch_pot_01.png"
-        alt="Decorative Planter Box"
-        class="lightbox-trigger"
-        data-caption="Decorative Planter Box"
-        data-images='["assets/4x4x4.75_inch_pot_01.png","assets/4x4x4.75_inch_pot_02.png"]'
-      >
+      <img src="assets/Peace_Lily_00.png" alt="Peace Lily" class="lightbox-trigger"
+           data-caption="Peace Lily"
+           data-images='["assets/Peace_Lily_00.png","assets/Peace_Lily_01.png","assets/Peace_Lily_02.png"]'>
+      <div class="product-info">
+        <h3>Peace Lily</h3>
+        <p class="planter-line">
+          (Including Decorative Planter Box)
+          <button class="spec-btn" type="button">Specifications</button>
+        </p>
+        <div class="price-row">
+          <span class="price-current">300 BDT</span>
+          <span class="price-original">(550 BDT)</span>
+        </div>
+        <span class="discount-badge">(Save 250 BDT · 45% off)</span>
+        <a href="https://wa.me/8801777634120?text=I%20want%20Peace%20Lily" class="btn-secondary">Order</a>
+      </div>
+    </div>
+
+    <!-- Card 2: Ball Aralia -->
+    <div class="product">
+      <img src="assets/Ball_Aralia_00.png" alt="Ball Aralia" class="lightbox-trigger"
+           data-caption="Ball Aralia"
+           data-images='["assets/Ball_Aralia_00.png","assets/Ball_Aralia_01.png","assets/Ball_Aralia_02.png"]'>
+      <div class="product-info">
+        <h3>Ball Aralia</h3>
+        <p class="planter-line">
+          (Including Decorative Planter Box)
+          <button class="spec-btn" type="button">Specifications</button>
+        </p>
+        <div class="price-row">
+          <span class="price-current">320 BDT</span>
+          <span class="price-original">(580 BDT)</span>
+        </div>
+        <span class="discount-badge">(Save 260 BDT · 45% off)</span>
+        <a href="https://wa.me/8801777634120?text=I%20want%20Ball%20Aralia" class="btn-secondary">Order</a>
+      </div>
+    </div>
+
+    <!-- Card 3: Decorative Planter Box 01 -->
+    <div class="product">
+      <img src="assets/4x4x4.75_inch_pot_01.png" alt="Decorative Planter Box" class="lightbox-trigger"
+           data-caption="Decorative Planter Box"
+           data-images='["assets/4x4x4.75_inch_pot_01.png","assets/4x4x4.75_inch_pot_02.png"]'>
       <div class="product-info">
         <h3>Decorative Planter Box</h3>
-        <button class="spec-btn" type="button" style="margin: 4px 0 2px;">Specifications</button>
+        <button class="spec-btn" type="button" style="margin: 6px 0 4px;">Specifications</button>
         <div class="price-row">
           <span class="price-current">250 BDT</span>
           <span class="price-original">(300 BDT)</span>
@@ -307,18 +263,14 @@
       </div>
     </div>
 
-    <!-- Static card 2 -->
+    <!-- Card 4: Decorative Planter Box 02 -->
     <div class="product">
-      <img
-        src="assets/4x4x4.75_inch_pot_02.png"
-        alt="Decorative Planter Box"
-        class="lightbox-trigger"
-        data-caption="Decorative Planter Box"
-        data-images='["assets/4x4x4.75_inch_pot_02.png","assets/4x4x4.75_inch_pot_01.png"]'
-      >
+      <img src="assets/4x4x4.75_inch_pot_02.png" alt="Decorative Planter Box" class="lightbox-trigger"
+           data-caption="Decorative Planter Box"
+           data-images='["assets/4x4x4.75_inch_pot_02.png","assets/4x4x4.75_inch_pot_01.png"]'>
       <div class="product-info">
         <h3>Decorative Planter Box</h3>
-        <button class="spec-btn" type="button" style="margin: 4px 0 2px;">Specifications</button>
+        <button class="spec-btn" type="button" style="margin: 6px 0 4px;">Specifications</button>
         <div class="price-row">
           <span class="price-current">250 BDT</span>
           <span class="price-original">(300 BDT)</span>
@@ -334,14 +286,13 @@
 <!-- FOOTER -->
 <footer class="footer">
   <p>📍 28/1, Missionpara, Narayanganj, Bangladesh</p>
-  <p>📞 +8801777634120</p>
-  <p>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="badbc8d5d4d4d5d194d8dedfc9d2faddd7dbd3d694d9d5d7">[email&#160;protected]</a></p>
+  <p>📞 +8801777634120 &nbsp;|&nbsp; ✉️ aronnok.bdesh@gmail.com</p>
 </footer>
 
 <!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/8801777634120" class="whatsapp">💬</a>
 
-<!-- ── Spec popup (shared) ── -->
+<!-- Spec popup -->
 <div class="spec-popup" id="specPopup">
   <button class="spec-popup-close" id="specPopupClose">✕</button>
   <div class="spec-popup-title">📦 Planter Box Specifications</div>
@@ -354,7 +305,7 @@
   </table>
 </div>
 
-<!-- ── Lightbox ── -->
+<!-- Lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true">
   <button id="lightbox-close">✕</button>
   <button class="lb-nav hidden" id="lb-prev">&#8249;</button>
@@ -367,11 +318,10 @@
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── SPEC POPUP ── */
 const specPopup      = document.getElementById('specPopup');
 const specPopupClose = document.getElementById('specPopupClose');
-
 function openSpecPopup(btn) {
   const rect = btn.getBoundingClientRect();
   let left = rect.left;
@@ -381,12 +331,9 @@ function openSpecPopup(btn) {
   specPopup.classList.add('open');
 }
 function closeSpecPopup() { specPopup.classList.remove('open'); }
-
 specPopupClose.addEventListener('click', closeSpecPopup);
 document.addEventListener('click', e => {
-  if (specPopup.classList.contains('open')
-      && !specPopup.contains(e.target)
-      && !e.target.classList.contains('spec-btn')) closeSpecPopup();
+  if (specPopup.classList.contains('open') && !specPopup.contains(e.target) && !e.target.classList.contains('spec-btn')) closeSpecPopup();
 });
 document.addEventListener('click', e => {
   if (e.target.classList.contains('spec-btn')) {
@@ -427,7 +374,6 @@ function lbShow(index) {
   lbPrev.disabled = lbIndex === 0;
   lbNext.disabled = lbIndex === total - 1;
 }
-
 function openLightbox(images, caption) {
   lbImages = images; lbCaption.textContent = caption;
   lightbox.classList.add('open');
@@ -448,53 +394,12 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' && lbIndex < lbImages.length - 1) lbShow(lbIndex + 1);
 });
 
-function attachLightboxTriggers() {
-  document.querySelectorAll('.lightbox-trigger').forEach(img => {
-    if (img.dataset.lbBound) return;
-    img.dataset.lbBound = '1';
-    img.addEventListener('click', () => {
-      openLightbox(JSON.parse(img.getAttribute('data-images')), img.getAttribute('data-caption'));
-    });
+document.querySelectorAll('.lightbox-trigger').forEach(img => {
+  img.addEventListener('click', () => {
+    openLightbox(JSON.parse(img.getAttribute('data-images')), img.getAttribute('data-caption'));
   });
-}
-// Bind static cards immediately
-attachLightboxTriggers();
+});
+</script>
 
-/* ── LOAD DYNAMIC PRODUCTS (prepend before static cards) ── */
-fetch('products.json')
-  .then(r => r.json())
-  .then(products => {
-    const container   = document.getElementById('featuredProducts');
-    const firstStatic = container.querySelector('.product');
-    const featured    = products.slice(0, 2);
-
-    featured.forEach(p => {
-      const imgs = (p.images && p.images.length) ? p.images : [p.image];
-
-      const originalPriceHTML = p.originalPrice
-        ? `<span class="price-original">(${p.originalPrice})</span>` : '';
-
-      let discountHTML = '';
-      if (p.originalPrice) {
-        const cur = parseFloat(String(p.price).replace(/[^\d.]/g, ''));
-        const ori = parseFloat(String(p.originalPrice).replace(/[^\d.]/g, ''));
-        if (!isNaN(cur) && !isNaN(ori) && ori > cur) {
-          const saved   = Math.round(ori - cur);
-          const pct     = Math.round((saved / ori) * 100);
-          discountHTML  = `<span class="discount-badge">(Save ${saved} BDT · ${pct}% off)</span>`;
-        }
-      }
-
-      const div = document.createElement('div');
-      div.className = 'product';
-      div.innerHTML = `
-        <img src="${imgs[0]}" alt="${p.name}" class="lightbox-trigger"
-             data-caption="${p.name}" data-images='${JSON.stringify(imgs)}'>
-        <div class="product-info">
-          <h3>${p.name}</h3>
-          <div class="price-row">
-            <span class="price-current">${p.price}</span>
-            ${originalPriceHTML}
-          </div>
-          ${discountHTML}
-          <a href="https://wa.me/8801777634120?text=I%20want%20${encodeURIComponent(p.name)}"
+</body>
+</html>

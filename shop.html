@@ -3,313 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop</title>
+<title>Shop – Aronnok</title>
 <link rel="stylesheet" href="style.css">
 <style>
-
-  /* ── Homepage link ── */
-  .home-link-bar {
-    text-align: center;
-    padding: 10px 16px;
-    background: #f5f5f0;
-    border-bottom: 1px solid #ddd;
-  }
-  .home-link-bar.bottom {
-    border-bottom: none;
-    border-top: 1px solid #ddd;
-    margin-top: 32px;
-  }
-  .home-link-bar a {
-    color: #2e7d32;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: opacity 0.2s;
-  }
-  .home-link-bar a:hover { opacity: 0.75; }
-
-  /* ── Price display ── */
-  .price-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 4px 0 10px;
-    width: 100%;
-    flex-shrink: 0;
-  }
-  .price-current {
-    font-weight: 600;
-    color: #2e7d32;
-    white-space: nowrap;
-  }
-  .price-original {
-    color: #999;
-    text-decoration: line-through;
-    font-size: 0.9em;
-    white-space: nowrap;
-  }
-
-  /* ── Discount badge ── */
-  .discount-badge {
-    display: block;
-    font-size: 11px;
-    color: #b85c00;
-    margin: 2px 0 6px;
-    width: 100%;
-  }
-
-  /* ── Product info — stack vertically, button pushed right ── */
-  .product-info {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-  }
-  .product-info .btn-secondary {
-    align-self: flex-end;
-    margin-top: 12px;
-  }
-
-  /* ── Including Planter Box line ── */
-  .planter-line {
-    font-size: 12px;
-    color: #666;
-    margin: 3px 0 0;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-
-  /* ── Specifications tooltip trigger ── */
-  .spec-trigger {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-  }
-  .spec-btn {
-    font-size: 11px;
-    font-weight: 600;
-    color: #2e7d32;
-    border: 1px solid #2e7d32;
-    border-radius: 4px;
-    padding: 1px 7px;
-    cursor: pointer;
-    background: transparent;
-    font-family: inherit;
-    transition: background 0.15s, color 0.15s;
-    white-space: nowrap;
-    user-select: none;
-  }
-  .spec-btn:hover {
-    background: #2e7d32;
-    color: #fff;
-  }
-
-  /* ── Specifications popup ── */
-  .spec-popup {
-    display: none;
-    position: fixed;
-    z-index: 8000;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-    padding: 16px 20px;
-    min-width: 240px;
-    font-size: 13px;
-    line-height: 1.8;
-    color: #333;
-  }
-  .spec-popup.open { display: block; }
-  .spec-popup-title {
-    font-weight: 700;
-    font-size: 13px;
-    color: #2e7d32;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 6px;
-  }
-  .spec-popup table {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  .spec-popup td {
-    padding: 2px 6px 2px 0;
-    vertical-align: top;
-  }
-  .spec-popup td:first-child {
-    font-weight: 600;
-    color: #555;
-    white-space: nowrap;
-    padding-right: 10px;
-  }
-  .spec-popup-close {
-    position: absolute;
-    top: 8px; right: 10px;
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #999;
-    line-height: 1;
-  }
-  .spec-popup-close:hover { color: #333; }
-
-  /* ── Product image — clickable ── */
-  .product img {
-    cursor: zoom-in;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .product img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
-  }
-
-  /* ── Lightbox overlay ── */
-  #lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: rgba(0,0,0,0.88);
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-  }
-  #lightbox.open { display: flex; }
-
-  #lightbox-img {
-    max-width: 80vw;
-    max-height: 82vh;
-    object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 8px 48px rgba(0,0,0,0.5);
-    cursor: default;
-    animation: lb-pop 0.2s ease;
-    display: block;
-  }
-  @keyframes lb-pop {
-    from { transform: scale(0.88); opacity: 0; }
-    to   { transform: scale(1);    opacity: 1; }
-  }
-
-  /* ── Lightbox close ── */
-  #lightbox-close {
-    position: fixed;
-    top: 18px; right: 22px;
-    font-size: 28px;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-    opacity: 0.8;
-    z-index: 10001;
-    transition: opacity 0.15s;
-  }
-  #lightbox-close:hover { opacity: 1; }
-
-  /* ── Lightbox prev / next ── */
-  .lb-nav {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.15);
-    border: none;
-    color: #fff;
-    font-size: 32px;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10001;
-    transition: background 0.2s;
-    line-height: 1;
-    user-select: none;
-  }
-  .lb-nav:hover { background: rgba(255,255,255,0.3); }
-  .lb-nav:disabled { opacity: 0.2; cursor: default; }
-  #lb-prev { left: 16px; }
-  #lb-next { right: 16px; }
-  .lb-nav.hidden { display: none; }
-
-  /* ── Lightbox counter & caption ── */
-  #lightbox-footer {
-    position: fixed;
-    bottom: 20px;
-    left: 0; right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    pointer-events: none;
-    z-index: 10001;
-  }
-  #lightbox-caption {
-    color: rgba(255,255,255,0.85);
-    font-size: 14px;
-  }
-  #lightbox-counter {
-    color: rgba(255,255,255,0.5);
-    font-size: 12px;
-  }
-
-  /* ── Lightbox dots ── */
-  #lightbox-dots {
-    display: flex;
-    gap: 6px;
-    margin-top: 2px;
-    pointer-events: all;
-  }
-  .lb-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.35);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s;
-  }
-  .lb-dot.active { background: #fff; }
-
+  .home-link-bar{text-align:center;padding:10px 16px;background:#f5f5f0;border-bottom:1px solid #ddd}
+  .home-link-bar.bottom{border-bottom:none;border-top:1px solid #ddd;margin-top:32px}
+  .home-link-bar a{color:#2e7d32;font-size:14px;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:opacity .2s}
+  .home-link-bar a:hover{opacity:.75}
+  .price-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0 6px;width:100%}
+  .price-current{font-weight:600;color:#2e7d32;white-space:nowrap}
+  .price-original{color:#999;text-decoration:line-through;font-size:.9em;white-space:nowrap}
+  .discount-badge{display:block;font-size:11px;color:#b85c00;margin:0 0 6px;width:100%}
+  .product-info{display:flex!important;flex-direction:column!important;align-items:flex-start!important}
+  .planter-line{font-size:12px;color:#666;margin:3px 0 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .spec-btn{font-size:11px;font-weight:600;color:#2e7d32;border:1px solid #2e7d32;border-radius:4px;padding:1px 7px;cursor:pointer;background:transparent;font-family:inherit;transition:background .15s,color .15s;white-space:nowrap}
+  .spec-btn:hover{background:#2e7d32;color:#fff}
+  .card-actions{display:flex;align-items:center;justify-content:space-between;width:100%;margin-top:10px;gap:8px}
+  .qty-stepper{display:flex;align-items:center;border:1px solid #ddd;border-radius:6px;overflow:hidden;flex-shrink:0}
+  .qty-btn{width:30px;height:30px;background:#f5f5f5;border:none;font-size:16px;cursor:pointer;color:#444;transition:background .15s;display:flex;align-items:center;justify-content:center}
+  .qty-btn:hover{background:#e0e0e0}
+  .qty-num{width:32px;text-align:center;font-size:14px;font-weight:600;color:#1a1a1a;border-left:1px solid #ddd;border-right:1px solid #ddd;background:#fff;line-height:30px}
+  .btn-cart{flex:1;padding:7px 12px;background:#2e7d32;color:#fff;border:none;border-radius:6px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;white-space:nowrap}
+  .btn-cart:hover{background:#1b5e20}
+  .btn-cart.added{background:#1b5e20;animation:pulse .3s ease}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+  .product img{cursor:zoom-in;transition:transform .2s ease}
+  .product img:hover{transform:scale(1.02)}
+  /* CART */
+  .cart-float{position:fixed;bottom:80px;right:20px;background:#2e7d32;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(46,125,50,.4);z-index:7000;border:none;transition:background .2s,transform .2s}
+  .cart-float:hover{background:#1b5e20;transform:scale(1.06)}
+  .cart-badge{position:absolute;top:-4px;right:-4px;background:#e53935;color:#fff;font-size:10px;font-weight:700;min-width:18px;height:18px;border-radius:9px;display:none;align-items:center;justify-content:center;padding:0 4px}
+  .cart-badge.visible{display:flex}
+  .cart-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:7500}
+  .cart-overlay.open{display:block}
+  .cart-drawer{position:fixed;top:0;right:-420px;bottom:0;width:380px;max-width:95vw;background:#fff;z-index:8000;display:flex;flex-direction:column;box-shadow:-4px 0 24px rgba(0,0,0,.15);transition:right .3s cubic-bezier(.25,.46,.45,.94)}
+  .cart-drawer.open{right:0}
+  .cart-header{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid #eee;background:#f7fbf7}
+  .cart-header h3{font-size:16px;font-weight:700;color:#1a1a1a;margin:0}
+  .cart-close{background:none;border:none;font-size:22px;cursor:pointer;color:#666;padding:4px}
+  .cart-close:hover{color:#1a1a1a}
+  .cart-items{flex:1;overflow-y:auto;padding:16px 20px}
+  .cart-empty{text-align:center;padding:48px 20px;color:#999;font-size:14px}
+  .cart-empty-icon{font-size:40px;margin-bottom:10px}
+  .cart-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #f0f0f0}
+  .cart-item:last-child{border-bottom:none}
+  .cart-item-img{width:56px;height:56px;object-fit:cover;border-radius:6px;flex-shrink:0;border:1px solid #eee}
+  .cart-item-info{flex:1;min-width:0}
+  .cart-item-name{font-size:13px;font-weight:600;color:#1a1a1a;margin-bottom:4px}
+  .cart-item-price{font-size:12px;color:#2e7d32;font-weight:600}
+  .cart-item-actions{display:flex;align-items:center;gap:8px;margin-top:6px}
+  .cart-qty-btn{width:24px;height:24px;border-radius:4px;background:#f0f0f0;border:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:background .15s}
+  .cart-qty-btn:hover{background:#ddd}
+  .cart-qty-num{font-size:13px;font-weight:600;color:#1a1a1a;min-width:20px;text-align:center}
+  .cart-item-remove{margin-left:auto;background:none;border:none;color:#bbb;font-size:16px;cursor:pointer;padding:0 4px;transition:color .15s}
+  .cart-item-remove:hover{color:#e53935}
+  .cart-footer{padding:16px 20px 24px;border-top:1px solid #eee;background:#f7fbf7}
+  .cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .cart-total-label{font-size:14px;font-weight:600;color:#333}
+  .cart-total-amount{font-size:20px;font-weight:700;color:#2e7d32}
+  .cart-delivery-note{font-size:12px;color:#888;margin-bottom:16px;text-align:right}
+  .btn-checkout{width:100%;padding:13px;background:#25D366;color:#fff;border:none;border-radius:8px;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s}
+  .btn-checkout:hover{background:#1ebe5d}
+  .btn-clear-cart{width:100%;margin-top:8px;padding:8px;background:transparent;border:1px solid #ddd;border-radius:6px;font-family:inherit;font-size:12px;color:#999;cursor:pointer;transition:all .15s}
+  .btn-clear-cart:hover{border-color:#e53935;color:#e53935}
+  /* SPEC POPUP */
+  .spec-popup{display:none;position:fixed;z-index:9000;background:#fff;border:1px solid #ccc;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:16px 20px;min-width:240px;font-size:13px;line-height:1.8;color:#333}
+  .spec-popup.open{display:block}
+  .spec-popup-title{font-weight:700;font-size:13px;color:#2e7d32;margin-bottom:8px;border-bottom:1px solid #eee;padding-bottom:6px}
+  .spec-popup table{border-collapse:collapse;width:100%}
+  .spec-popup td{padding:2px 6px 2px 0;vertical-align:top}
+  .spec-popup td:first-child{font-weight:600;color:#555;white-space:nowrap;padding-right:10px}
+  .spec-popup-close{position:absolute;top:8px;right:10px;background:none;border:none;font-size:16px;cursor:pointer;color:#999}
+  .spec-popup-close:hover{color:#333}
+  /* LIGHTBOX */
+  #lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;padding:24px}
+  #lightbox.open{display:flex}
+  #lightbox-img{max-width:80vw;max-height:82vh;object-fit:contain;border-radius:6px;box-shadow:0 8px 48px rgba(0,0,0,.5);cursor:default;animation:lb-pop .2s ease;display:block}
+  @keyframes lb-pop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+  #lightbox-close{position:fixed;top:18px;right:22px;font-size:28px;color:#fff;background:none;border:none;cursor:pointer;opacity:.8;z-index:10001}
+  #lightbox-close:hover{opacity:1}
+  .lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:none;color:#fff;font-size:32px;width:52px;height:52px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10001;transition:background .2s;user-select:none}
+  .lb-nav:hover{background:rgba(255,255,255,.3)}
+  .lb-nav.hidden{display:none}
+  #lb-prev{left:16px}#lb-next{right:16px}
+  #lightbox-footer{position:fixed;bottom:20px;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:4px;pointer-events:none;z-index:10001}
+  #lightbox-caption{color:rgba(255,255,255,.85);font-size:14px}
+  #lightbox-counter{color:rgba(255,255,255,.5);font-size:12px}
+  #lightbox-dots{display:flex;gap:6px;margin-top:2px;pointer-events:all}
+  .lb-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.35);border:none;cursor:pointer;padding:0;transition:background .2s}
+  .lb-dot.active{background:#fff}
 </style>
 </head>
-
 <body>
 
-<!-- ── Top homepage link ── -->
 <div class="home-link-bar">
   <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
 </div>
 
-<header class="nav">
-  <h2>Shop</h2>
-</header>
+<header class="nav"><h2>Shop</h2></header>
 
 <section class="section">
-  <div class="product-grid" id="productContainer">
-    <!-- Products will load here -->
-  </div>
+  <div class="product-grid" id="productContainer"></div>
 </section>
 
-<!-- ── Bottom homepage link ── -->
 <div class="home-link-bar bottom">
   <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
 </div>
 
-<!-- ── Lightbox ── -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Product image">
-  <button id="lightbox-close" aria-label="Close">✕</button>
-  <button class="lb-nav" id="lb-prev" aria-label="Previous image">&#8249;</button>
-  <img id="lightbox-img" src="" alt="" />
-  <button class="lb-nav" id="lb-next" aria-label="Next image">&#8250;</button>
+<!-- Floating cart -->
+<button class="cart-float" id="cartFloatBtn" aria-label="View cart">
+  🛒<span class="cart-badge" id="cartBadge">0</span>
+</button>
+
+<!-- Cart drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>🛒 Your Cart</h3>
+    <button class="cart-close" id="cartClose">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">🌱</div>
+      <div>Your cart is empty.<br>Add some plants!</div>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-amount" id="cartTotal">0 BDT</span>
+    </div>
+    <div class="cart-delivery-note">+ Delivery Charge</div>
+    <button class="btn-checkout" id="btnCheckout">💬 Order via WhatsApp</button>
+    <button class="btn-clear-cart" id="btnClearCart">Clear cart</button>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <button id="lightbox-close">✕</button>
+  <button class="lb-nav hidden" id="lb-prev">&#8249;</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <button class="lb-nav hidden" id="lb-next">&#8250;</button>
   <div id="lightbox-footer">
     <div id="lightbox-caption"></div>
     <div id="lightbox-counter"></div>
@@ -317,13 +152,13 @@
   </div>
 </div>
 
-<!-- ── Specifications popup (single shared) ── -->
+<!-- Spec popup -->
 <div class="spec-popup" id="specPopup">
-  <button class="spec-popup-close" id="specPopupClose" aria-label="Close">✕</button>
+  <button class="spec-popup-close" id="specPopupClose">✕</button>
   <div class="spec-popup-title">📦 Planter Box Specifications</div>
   <table>
     <tr><td>Type</td><td>Decorative Planter Box</td></tr>
-    <tr><td>Dimensions</td><td>4&Prime; &times; 4&Prime; &times; 4.75&Prime; (L&times;W&times;H)</td></tr>
+    <tr><td>Dimensions</td><td>4&Prime;&times;4&Prime;&times;4.75&Prime; (L&times;W&times;H)</td></tr>
     <tr><td>Material</td><td>Durable Lightweight Polymer</td></tr>
     <tr><td>Finish</td><td>Hand-painted Acrylic Artwork</td></tr>
     <tr><td>Recommended</td><td>Indoor Plants &amp; Desk D&eacute;cor</td></tr>
@@ -331,205 +166,161 @@
 </div>
 
 <script>
+/* ── CART ── */
+let cart=[];
+const getTotal=()=>cart.reduce((s,i)=>s+i.price*i.qty,0);
+const getCount=()=>cart.reduce((s,i)=>s+i.qty,0);
 
-/* ════════════════════════════════
-   SPECIFICATIONS POPUP
-════════════════════════════════ */
-const specPopup = document.getElementById('specPopup');
-const specPopupClose = document.getElementById('specPopupClose');
+function updateBadge(){const n=getCount(),b=document.getElementById('cartBadge');b.textContent=n;b.classList.toggle('visible',n>0)}
 
-function openSpecPopup(triggerBtn) {
-  const rect = triggerBtn.getBoundingClientRect();
-  const popupW = 260;
-  let left = rect.left;
-  // keep within viewport
-  if (left + popupW > window.innerWidth - 12) {
-    left = window.innerWidth - popupW - 12;
-  }
-  let top = rect.bottom + 6;
-  specPopup.style.left = left + 'px';
-  specPopup.style.top  = top  + 'px';
-  specPopup.classList.add('open');
+function renderCart(){
+  const el=document.getElementById('cartItems'),emp=document.getElementById('cartEmpty'),
+        ft=document.getElementById('cartFooter'),tot=document.getElementById('cartTotal');
+  if(!cart.length){el.innerHTML='';el.appendChild(emp);emp.style.display='block';ft.style.display='none';updateBadge();return}
+  emp.style.display='none';ft.style.display='block';el.innerHTML='';
+  cart.forEach((item,idx)=>{
+    const r=document.createElement('div');r.className='cart-item';
+    r.innerHTML=`<img class="cart-item-img" src="${item.img}" alt="${item.name}">
+    <div class="cart-item-info">
+      <div class="cart-item-name">${item.name}</div>
+      <div class="cart-item-price">${item.price} BDT each</div>
+      <div class="cart-item-actions">
+        <button class="cart-qty-btn" data-idx="${idx}" data-action="dec">−</button>
+        <span class="cart-qty-num">${item.qty}</span>
+        <button class="cart-qty-btn" data-idx="${idx}" data-action="inc">+</button>
+        <button class="cart-item-remove" data-idx="${idx}">✕</button>
+      </div>
+    </div>`;
+    el.appendChild(r);
+  });
+  tot.textContent=getTotal()+' BDT';updateBadge();
 }
 
-function closeSpecPopup() {
-  specPopup.classList.remove('open');
+function addToCart(name,price,img,qty){
+  const ex=cart.find(i=>i.name===name);
+  if(ex)ex.qty+=qty;else cart.push({name,price,img,qty});
+  renderCart();
 }
 
-specPopupClose.addEventListener('click', closeSpecPopup);
-
-// Close when clicking outside
-document.addEventListener('click', e => {
-  if (specPopup.classList.contains('open')
-      && !specPopup.contains(e.target)
-      && !e.target.classList.contains('spec-btn')) {
-    closeSpecPopup();
-  }
+document.getElementById('cartItems').addEventListener('click',e=>{
+  const b=e.target.closest('[data-idx]');if(!b)return;
+  const idx=parseInt(b.getAttribute('data-idx')),act=b.getAttribute('data-action');
+  if(b.classList.contains('cart-item-remove'))cart.splice(idx,1);
+  else if(act==='inc')cart[idx].qty++;
+  else if(act==='dec'){cart[idx].qty--;if(cart[idx].qty<=0)cart.splice(idx,1);}
+  renderCart();
 });
 
-// Delegate spec-btn clicks (works for dynamically added cards)
-document.addEventListener('click', e => {
-  if (e.target.classList.contains('spec-btn')) {
-    e.stopPropagation();
-    if (specPopup.classList.contains('open')) {
-      closeSpecPopup();
-    } else {
-      openSpecPopup(e.target);
+document.getElementById('btnClearCart').addEventListener('click',()=>{cart=[];renderCart();closeCart();});
+
+function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open');document.body.style.overflow='';}
+
+document.getElementById('cartFloatBtn').addEventListener('click',openCart);
+document.getElementById('cartClose').addEventListener('click',closeCart);
+document.getElementById('cartOverlay').addEventListener('click',closeCart);
+
+document.getElementById('btnCheckout').addEventListener('click',()=>{
+  if(!cart.length)return;
+  const lines=cart.map(i=>`- ${i.name} × ${i.qty} = ${i.price*i.qty} BDT`).join('\n');
+  const msg=encodeURIComponent(`Hello Aronnok! I'd like to order:\n\n${lines}\n\nTotal: ${getTotal()} BDT\n(+ Delivery Charge)\n\nPlease confirm.`);
+  window.open(`https://wa.me/8801777634120?text=${msg}`,'_blank');
+});
+
+/* ── SPEC POPUP ── */
+const sp=document.getElementById('specPopup');
+document.getElementById('specPopupClose').addEventListener('click',()=>sp.classList.remove('open'));
+document.addEventListener('click',e=>{
+  if(sp.classList.contains('open')&&!sp.contains(e.target)&&!e.target.classList.contains('spec-btn'))sp.classList.remove('open');
+});
+document.addEventListener('click',e=>{
+  if(!e.target.classList.contains('spec-btn'))return;
+  e.stopPropagation();
+  if(sp.classList.contains('open')){sp.classList.remove('open');return;}
+  const r=e.target.getBoundingClientRect();
+  let l=r.left;if(l+260>window.innerWidth-12)l=window.innerWidth-260-12;
+  sp.style.left=l+'px';sp.style.top=(r.bottom+6)+'px';sp.classList.add('open');
+});
+
+/* ── LIGHTBOX ── */
+const LB=document.getElementById('lightbox'),LBI=document.getElementById('lightbox-img'),
+      LBC=document.getElementById('lightbox-caption'),LBN=document.getElementById('lightbox-counter'),
+      LBD=document.getElementById('lightbox-dots'),LBP=document.getElementById('lb-prev'),LBX=document.getElementById('lb-next');
+let lbI=[],lbJ=0;
+function lbShow(j){
+  lbJ=j;LBI.style.opacity='0';
+  setTimeout(()=>{LBI.src=lbI[lbJ];LBI.style.opacity='1';},100);
+  LBI.style.transition='opacity .15s';
+  const t=lbI.length;LBN.textContent=t>1?`${lbJ+1} / ${t}`:'';
+  LBD.innerHTML='';
+  if(t>1)lbI.forEach((_,k)=>{const d=document.createElement('button');d.className='lb-dot'+(k===lbJ?' active':'');d.addEventListener('click',()=>lbShow(k));LBD.appendChild(d);});
+  LBP.classList.toggle('hidden',t<=1);LBX.classList.toggle('hidden',t<=1);
+  LBP.disabled=lbJ===0;LBX.disabled=lbJ===t-1;
+}
+function openLB(imgs,cap){lbI=imgs;LBC.textContent=cap;LB.classList.add('open');document.body.style.overflow='hidden';sp.classList.remove('open');lbShow(0);}
+function closeLB(){LB.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('lightbox-close').addEventListener('click',closeLB);
+LBP.addEventListener('click',()=>{if(lbJ>0)lbShow(lbJ-1);});
+LBX.addEventListener('click',()=>{if(lbJ<lbI.length-1)lbShow(lbJ+1);});
+LB.addEventListener('click',e=>{if(e.target===LB)closeLB();});
+LBI.addEventListener('click',e=>e.stopPropagation());
+document.addEventListener('keydown',e=>{
+  if(!LB.classList.contains('open'))return;
+  if(e.key==='Escape')closeLB();
+  if(e.key==='ArrowLeft'&&lbJ>0)lbShow(lbJ-1);
+  if(e.key==='ArrowRight'&&lbJ<lbI.length-1)lbShow(lbJ+1);
+});
+
+/* ── LOAD PRODUCTS ── */
+fetch('products.json').then(r=>r.json()).then(products=>{
+  const container=document.getElementById('productContainer');
+  products.forEach(p=>{
+    const imgs=(p.images&&p.images.length)?p.images:[p.image];
+    const pn=parseFloat(String(p.price).replace(/[^\d.]/g,''));
+    const origH=p.originalPrice?`<span class="price-original">(${p.originalPrice})</span>`:'';
+    let discH='';
+    if(p.originalPrice){
+      const ori=parseFloat(String(p.originalPrice).replace(/[^\d.]/g,''));
+      if(!isNaN(pn)&&!isNaN(ori)&&ori>pn)
+        discH=`<span class="discount-badge">(Save ${Math.round(ori-pn)} BDT · ${Math.round((ori-pn)/ori*100)}% off)</span>`;
     }
-  }
-});
-
-
-/* ════════════════════════════════
-   LIGHTBOX
-════════════════════════════════ */
-const lightbox   = document.getElementById('lightbox');
-const lbImg      = document.getElementById('lightbox-img');
-const lbCaption  = document.getElementById('lightbox-caption');
-const lbCounter  = document.getElementById('lightbox-counter');
-const lbDots     = document.getElementById('lightbox-dots');
-const lbClose    = document.getElementById('lightbox-close');
-const lbPrev     = document.getElementById('lb-prev');
-const lbNext     = document.getElementById('lb-next');
-
-let lbImages  = [];   // array of image src strings for current product
-let lbIndex   = 0;    // current index
-
-function lbShow(index) {
-  lbIndex = index;
-  lbImg.style.opacity = '0';
-  setTimeout(() => {
-    lbImg.src = lbImages[lbIndex];
-    lbImg.style.opacity = '1';
-  }, 100);
-  lbImg.style.transition = 'opacity 0.15s ease';
-
-  const total = lbImages.length;
-
-  // counter
-  lbCounter.textContent = total > 1 ? `${lbIndex + 1} / ${total}` : '';
-
-  // dots
-  lbDots.innerHTML = '';
-  if (total > 1) {
-    lbImages.forEach((_, i) => {
-      const dot = document.createElement('button');
-      dot.className = 'lb-dot' + (i === lbIndex ? ' active' : '');
-      dot.setAttribute('aria-label', `Image ${i + 1}`);
-      dot.addEventListener('click', () => lbShow(i));
-      lbDots.appendChild(dot);
-    });
-  }
-
-  // nav buttons
-  lbPrev.classList.toggle('hidden', total <= 1);
-  lbNext.classList.toggle('hidden', total <= 1);
-  lbPrev.disabled = lbIndex === 0;
-  lbNext.disabled = lbIndex === total - 1;
-}
-
-function openLightbox(images, caption, startIndex = 0) {
-  lbImages = images;
-  lbCaption.textContent = caption;
-  lightbox.classList.add('open');
-  document.body.style.overflow = 'hidden';
-  closeSpecPopup();
-  lbShow(startIndex);
-}
-
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-lbClose.addEventListener('click', closeLightbox);
-lbPrev.addEventListener('click', () => { if (lbIndex > 0) lbShow(lbIndex - 1); });
-lbNext.addEventListener('click', () => { if (lbIndex < lbImages.length - 1) lbShow(lbIndex + 1); });
-
-lightbox.addEventListener('click', e => {
-  if (e.target === lightbox) closeLightbox();
-});
-
-document.addEventListener('keydown', e => {
-  if (!lightbox.classList.contains('open')) return;
-  if (e.key === 'Escape')      closeLightbox();
-  if (e.key === 'ArrowLeft'  && lbIndex > 0)                   lbShow(lbIndex - 1);
-  if (e.key === 'ArrowRight' && lbIndex < lbImages.length - 1) lbShow(lbIndex + 1);
-});
-
-lbImg.addEventListener('click', e => e.stopPropagation());
-
-
-/* ════════════════════════════════
-   LOAD PRODUCTS
-════════════════════════════════ */
-fetch('products.json')
-  .then(r => r.json())
-  .then(products => {
-
-    const container = document.getElementById('productContainer');
-
-    products.forEach(p => {
-
-      // Resolve images array (fall back to single image)
-      const imgs = (p.images && p.images.length) ? p.images : [p.image];
-
-      const originalPriceHTML = p.originalPrice
-        ? `<span class="price-original">(${p.originalPrice})</span>`
-        : '';
-
-      // Auto-calculate discount
-      let discountHTML = '';
-      if (p.originalPrice) {
-        const current  = parseFloat(String(p.price).replace(/[^\d.]/g, ''));
-        const original = parseFloat(String(p.originalPrice).replace(/[^\d.]/g, ''));
-        if (!isNaN(current) && !isNaN(original) && original > current) {
-          const saved   = Math.round(original - current);
-          const percent = Math.round((saved / original) * 100);
-          discountHTML = `<span class="discount-badge">(Save ${saved} BDT · ${percent}% off)</span>`;
-        }
-      }
-
-      const card = `
-        <div class="product">
-          <img
-            src="${imgs[0]}"
-            alt="${p.name}"
-            class="lightbox-trigger"
-            data-caption="${p.name}"
-            data-images='${JSON.stringify(imgs)}'
-          >
-          <div class="product-info">
-            <h3>${p.name}</h3>
-            <p class="planter-line">
-              (Including Decorative Planter Box)
-              <button class="spec-btn" type="button">Specifications</button>
-            </p>
-            <div class="price-row">
-              <span class="price-current">${p.price}</span>
-              ${originalPriceHTML}
-            </div>
-            ${discountHTML}
-            <a href="https://wa.me/8801777634120?text=I%20want%20${encodeURIComponent(p.name)}" class="btn-secondary">Order</a>
+    const div=document.createElement('div');div.className='product';
+    div.innerHTML=`
+      <img src="${imgs[0]}" alt="${p.name}" class="lb-trigger" data-caption="${p.name}" data-images='${JSON.stringify(imgs)}'>
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <p class="planter-line">(Including Decorative Planter Box)
+          <button class="spec-btn" type="button">Specifications</button></p>
+        <div class="price-row"><span class="price-current">${p.price}</span>${origH}</div>
+        ${discH}
+        <div class="card-actions">
+          <div class="qty-stepper">
+            <button class="qty-btn qty-dec">−</button>
+            <span class="qty-num">1</span>
+            <button class="qty-btn qty-inc">+</button>
           </div>
+          <button class="btn-cart" data-name="${p.name}" data-price="${pn}" data-img="${imgs[0]}">+ Add to Cart</button>
         </div>
-      `;
+      </div>`;
+    container.appendChild(div);
 
-      container.innerHTML += card;
+    const dec=div.querySelector('.qty-dec'),inc=div.querySelector('.qty-inc'),
+          num=div.querySelector('.qty-num'),btn=div.querySelector('.btn-cart');
+    dec.addEventListener('click',()=>{let v=parseInt(num.textContent);if(v>1)num.textContent=v-1;});
+    inc.addEventListener('click',()=>{num.textContent=parseInt(num.textContent)+1;});
+    btn.addEventListener('click',()=>{
+      const qty=parseInt(num.textContent);
+      addToCart(btn.dataset.name,parseFloat(btn.dataset.price),btn.dataset.img,qty);
+      btn.textContent='✓ Added!';btn.classList.add('added');
+      setTimeout(()=>{btn.textContent='+ Add to Cart';btn.classList.remove('added');},1500);
+      num.textContent='1';openCart();
     });
-
-    // Attach lightbox triggers after cards are rendered
-    document.querySelectorAll('.lightbox-trigger').forEach(img => {
-      img.addEventListener('click', () => {
-        const images  = JSON.parse(img.getAttribute('data-images'));
-        const caption = img.getAttribute('data-caption');
-        openLightbox(images, caption, 0);
-      });
+    div.querySelector('.lb-trigger').addEventListener('click',()=>{
+      openLB(JSON.parse(div.querySelector('.lb-trigger').getAttribute('data-images')),
+             div.querySelector('.lb-trigger').getAttribute('data-caption'));
     });
-
-  })
-  .catch(err => console.error('Error loading products:', err));
-
+  });
+}).catch(err=>console.error('Error:',err));
 </script>
 </body>
 </html>

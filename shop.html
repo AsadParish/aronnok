@@ -215,7 +215,11 @@ function updateBadge(){const n=getCount(),b=document.getElementById('cartBadge')
 function renderCart(){
   const el=document.getElementById('cartItems'),emp=document.getElementById('cartEmpty'),
         ft=document.getElementById('cartFooter'),tot=document.getElementById('cartTotal');
-  if(!cart.length){el.innerHTML='';el.appendChild(emp);emp.style.display='block';ft.style.display='none';updateBadge();return}
+  if(!cart.length){
+    el.innerHTML='';el.appendChild(emp);
+    emp.style.display='block';ft.style.display='none';
+    updateBadge();saveCart();return;
+  }
   emp.style.display='none';ft.style.display='block';el.innerHTML='';
   cart.forEach((item,idx)=>{
     const r=document.createElement('div');r.className='cart-item';
@@ -352,13 +356,11 @@ fetch('products.json').then(r=>r.json()).then(products=>{
     inc.addEventListener('click',()=>{num.textContent=parseInt(num.textContent)+1;});
     btn.addEventListener('click',()=>{
       const qty=parseInt(num.textContent);
-      const wasEmpty = cart.length === 0;
       addToCart(btn.dataset.name,parseFloat(btn.dataset.price),btn.dataset.img,qty);
       showToast(btn.dataset.name);
       btn.textContent='✓ Added!';btn.classList.add('added');
       setTimeout(()=>{btn.textContent='+ Add to Cart';btn.classList.remove('added');},1500);
       num.textContent='1';
-      if(wasEmpty) openCart();
     });
     div.querySelector('.lb-trigger').addEventListener('click',()=>{
       openLB(JSON.parse(div.querySelector('.lb-trigger').getAttribute('data-images')),

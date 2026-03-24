@@ -204,7 +204,9 @@ function showToast(name){
 }
 
 /* ── CART ── */
-let cart=[];
+let cart = JSON.parse(localStorage.getItem('aronnok_cart') || '[]');
+
+function saveCart() { localStorage.setItem('aronnok_cart', JSON.stringify(cart)); }
 const getTotal=()=>cart.reduce((s,i)=>s+i.price*i.qty,0);
 const getCount=()=>cart.reduce((s,i)=>s+i.qty,0);
 
@@ -230,7 +232,7 @@ function renderCart(){
     </div>`;
     el.appendChild(r);
   });
-  tot.textContent=getTotal()+' BDT';updateBadge();
+  tot.textContent=getTotal()+' BDT';updateBadge();saveCart();
 }
 
 function addToCart(name,price,img,qty){
@@ -262,6 +264,8 @@ document.getElementById('btnCheckout').addEventListener('click',()=>{
   const lines=cart.map(i=>`- ${i.name} × ${i.qty} = ${i.price*i.qty} BDT`).join('\n');
   const msg=encodeURIComponent(`Hello Aronnok! I'd like to order:\n\n${lines}\n\nTotal: ${getTotal()} BDT\n(+ Delivery Charge)\n\nPlease confirm.`);
   window.open(`https://wa.me/8801777634120?text=${msg}`,'_blank');
+  // Clear cart after sending order
+  cart=[];renderCart();closeCart();
 });
 
 /* ── SPEC POPUP ── */
@@ -309,6 +313,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ── LOAD PRODUCTS ── */
+renderCart(); // restore cart from localStorage on page load
 fetch('products.json').then(r=>r.json()).then(products=>{
   const container=document.getElementById('productContainer');
   products.forEach(p=>{

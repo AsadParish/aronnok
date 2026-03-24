@@ -1,5 +1,6 @@
 [
   {
+    "id": "PL 4821",
     "name": "Peace Lily",
     "price": "300 BDT",
     "originalPrice": "550 BDT",
@@ -11,6 +12,7 @@
     ]
   },
   {
+    "id": "BA 7364",
     "name": "Ball Aralia",
     "price": "320 BDT",
     "originalPrice": "580 BDT",
@@ -22,6 +24,7 @@
     ]
   },
   {
+    "id": "BK 2953",
     "name": "Ball Kamini",
     "price": "280 BDT",
     "originalPrice": "500 BDT",
@@ -32,6 +35,7 @@
     ]
   },
   {
+    "id": "CP 5107",
     "name": "Calathea Picturata",
     "price": "350 BDT",
     "originalPrice": "620 BDT",
@@ -44,6 +48,7 @@
     ]
   },
   {
+    "id": "GB 3876",
     "name": "Goeppertia Bachemiana",
     "price": "330 BDT",
     "originalPrice": "590 BDT",
@@ -54,6 +59,7 @@
     ]
   },
   {
+    "id": "LL 6249",
     "name": "Leopard Lily",
     "price": "290 BDT",
     "originalPrice": "520 BDT",
@@ -63,6 +69,7 @@
     ]
   },
   {
+    "id": "MS 9031",
     "name": "Mexican Sword Plant",
     "price": "310 BDT",
     "originalPrice": "560 BDT",
@@ -75,6 +82,7 @@
     ]
   },
   {
+    "id": "PB 7415",
     "name": "Philodendron Burle Marx",
     "price": "340 BDT",
     "originalPrice": "600 BDT",

@@ -188,88 +188,125 @@
 
 <script>
 /* ── TOAST ── */
-let toastTimer=null;
-function showToast(name){
-  const toast=document.getElementById('cartToast');
-  const msg=document.getElementById('cartToastMsg');
-  msg.textContent=`${name} added!`;
+let toastTimer = null;
+function showToast(name) {
+  const toast = document.getElementById('cartToast');
+  document.getElementById('cartToastMsg').textContent = name + ' added!';
   toast.classList.add('show');
-  // badge bounce
-  const badge=document.getElementById('cartBadge');
+  const badge = document.getElementById('cartBadge');
   badge.classList.remove('bounce');
-  void badge.offsetWidth; // reflow to restart animation
+  void badge.offsetWidth;
   badge.classList.add('bounce');
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
 }
 
 /* ── CART ── */
-let cart = JSON.parse(localStorage.getItem('aronnok_cart') || '[]');
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('aronnok_cart') || '[]'); } catch(e) { cart = []; }
 
-function saveCart() { localStorage.setItem('aronnok_cart', JSON.stringify(cart)); }
-const getTotal=()=>cart.reduce((s,i)=>s+i.price*i.qty,0);
-const getCount=()=>cart.reduce((s,i)=>s+i.qty,0);
+function saveCart() {
+  try { localStorage.setItem('aronnok_cart', JSON.stringify(cart)); } catch(e) {}
+}
+function getTotal() { return cart.reduce((s, i) => s + i.price * i.qty, 0); }
+function getCount() { return cart.reduce((s, i) => s + i.qty, 0); }
 
-function updateBadge(){const n=getCount(),b=document.getElementById('cartBadge');b.textContent=n;b.classList.toggle('visible',n>0)}
-
-function renderCart(){
-  const el=document.getElementById('cartItems'),emp=document.getElementById('cartEmpty'),
-        ft=document.getElementById('cartFooter'),tot=document.getElementById('cartTotal');
-  if(!cart.length){
-    el.innerHTML='';el.appendChild(emp);
-    emp.style.display='block';ft.style.display='none';
-    updateBadge();saveCart();return;
-  }
-  emp.style.display='none';ft.style.display='block';el.innerHTML='';
-  cart.forEach((item,idx)=>{
-    const r=document.createElement('div');r.className='cart-item';
-    r.innerHTML=`<img class="cart-item-img" src="${item.img}" alt="${item.name}">
-    <div class="cart-item-info">
-      <div class="cart-item-name">${item.name}</div>
-      <div class="cart-item-price">${item.price} BDT each</div>
-      <div class="cart-item-actions">
-        <button class="cart-qty-btn" data-idx="${idx}" data-action="dec">−</button>
-        <span class="cart-qty-num">${item.qty}</span>
-        <button class="cart-qty-btn" data-idx="${idx}" data-action="inc">+</button>
-        <button class="cart-item-remove" data-idx="${idx}">✕</button>
-      </div>
-    </div>`;
-    el.appendChild(r);
-  });
-  tot.textContent=getTotal()+' BDT';updateBadge();saveCart();
+function updateBadge() {
+  const n = getCount();
+  const b = document.getElementById('cartBadge');
+  b.textContent = n;
+  b.style.display = n > 0 ? 'flex' : 'none';
 }
 
-function addToCart(name,price,img,qty){
-  const ex=cart.find(i=>i.name===name);
-  if(ex)ex.qty+=qty;else cart.push({name,price,img,qty});
+function renderCart() {
+  const el  = document.getElementById('cartItems');
+  const ft  = document.getElementById('cartFooter');
+  const tot = document.getElementById('cartTotal');
+
+  // Always clear and rebuild
+  el.innerHTML = '';
+
+  if (cart.length === 0) {
+    el.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">🌱</div><div>Your cart is empty.<br>Add some plants!</div></div>';
+    ft.style.display = 'none';
+    updateBadge();
+    saveCart();
+    return;
+  }
+
+  ft.style.display = 'block';
+  cart.forEach((item, idx) => {
+    const r = document.createElement('div');
+    r.className = 'cart-item';
+    r.innerHTML = `
+      <img class="cart-item-img" src="${item.img}" alt="${item.name}">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${item.price} BDT each</div>
+        <div class="cart-item-actions">
+          <button class="cart-qty-btn" data-idx="${idx}" data-action="dec">−</button>
+          <span class="cart-qty-num">${item.qty}</span>
+          <button class="cart-qty-btn" data-idx="${idx}" data-action="inc">+</button>
+          <button class="cart-item-remove" data-idx="${idx}">✕</button>
+        </div>
+      </div>`;
+    el.appendChild(r);
+  });
+
+  tot.textContent = getTotal() + ' BDT';
+  updateBadge();
+  saveCart();
+}
+
+function addToCart(name, price, img, qty) {
+  const ex = cart.find(i => i.name === name);
+  if (ex) ex.qty += qty;
+  else cart.push({ name, price, img, qty });
   renderCart();
 }
 
-document.getElementById('cartItems').addEventListener('click',e=>{
-  const b=e.target.closest('[data-idx]');if(!b)return;
-  const idx=parseInt(b.getAttribute('data-idx')),act=b.getAttribute('data-action');
-  if(b.classList.contains('cart-item-remove'))cart.splice(idx,1);
-  else if(act==='inc')cart[idx].qty++;
-  else if(act==='dec'){cart[idx].qty--;if(cart[idx].qty<=0)cart.splice(idx,1);}
+// Cart item qty/remove (delegated)
+document.getElementById('cartItems').addEventListener('click', e => {
+  const b = e.target.closest('[data-idx]');
+  if (!b) return;
+  const idx = parseInt(b.getAttribute('data-idx'));
+  const act = b.getAttribute('data-action');
+  if (b.classList.contains('cart-item-remove')) {
+    cart.splice(idx, 1);
+  } else if (act === 'inc') {
+    cart[idx].qty++;
+  } else if (act === 'dec') {
+    cart[idx].qty--;
+    if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  }
   renderCart();
 });
 
-document.getElementById('btnClearCart').addEventListener('click',()=>{cart=[];renderCart();closeCart();});
+document.getElementById('btnClearCart').addEventListener('click', () => { cart = []; renderCart(); closeCart(); });
 
-function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open');document.body.style.overflow='';}
+/* ── CART OPEN/CLOSE ── */
+function openCart()  {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-document.getElementById('cartFloatBtn').addEventListener('click',openCart);
-document.getElementById('cartClose').addEventListener('click',closeCart);
-document.getElementById('cartOverlay').addEventListener('click',closeCart);
+document.getElementById('cartFloatBtn').addEventListener('click', openCart);
+document.getElementById('cartClose').addEventListener('click', closeCart);
+document.getElementById('cartOverlay').addEventListener('click', closeCart);
 
-document.getElementById('btnCheckout').addEventListener('click',()=>{
-  if(!cart.length)return;
-  const lines=cart.map(i=>`- ${i.name} × ${i.qty} = ${i.price*i.qty} BDT`).join('\n');
-  const msg=encodeURIComponent(`Hello Aronnok! I'd like to order:\n\n${lines}\n\nTotal: ${getTotal()} BDT\n(+ Delivery Charge)\n\nPlease confirm.`);
-  window.open(`https://wa.me/8801777634120?text=${msg}`,'_blank');
-  // Clear cart after sending order
-  cart=[];renderCart();closeCart();
+/* ── WHATSAPP CHECKOUT ── */
+document.getElementById('btnCheckout').addEventListener('click', () => {
+  if (!cart.length) return;
+  const lines = cart.map(i => `- ${i.name} × ${i.qty} = ${i.price * i.qty} BDT`).join('\n');
+  const msg = encodeURIComponent(`Hello Aronnok! I'd like to order:\n\n${lines}\n\nTotal: ${getTotal()} BDT\n(+ Delivery Charge)\n\nPlease confirm.`);
+  window.open(`https://wa.me/8801777634120?text=${msg}`, '_blank');
+  cart = []; renderCart(); closeCart();
 });
 
 /* ── SPEC POPUP ── */
@@ -317,7 +354,7 @@ document.addEventListener('keydown',e=>{
 });
 
 /* ── LOAD PRODUCTS ── */
-renderCart(); // restore cart from localStorage on page load
+renderCart(); // restore saved cart on page load
 fetch('products.json').then(r=>r.json()).then(products=>{
   const container=document.getElementById('productContainer');
   products.forEach(p=>{
@@ -354,13 +391,14 @@ fetch('products.json').then(r=>r.json()).then(products=>{
           num=div.querySelector('.qty-num'),btn=div.querySelector('.btn-cart');
     dec.addEventListener('click',()=>{let v=parseInt(num.textContent);if(v>1)num.textContent=v-1;});
     inc.addEventListener('click',()=>{num.textContent=parseInt(num.textContent)+1;});
-    btn.addEventListener('click',()=>{
-      const qty=parseInt(num.textContent);
-      addToCart(btn.dataset.name,parseFloat(btn.dataset.price),btn.dataset.img,qty);
+    btn.addEventListener('click', () => {
+      const qty = parseInt(num.textContent);
+      addToCart(btn.dataset.name, parseFloat(btn.dataset.price), btn.dataset.img, qty);
       showToast(btn.dataset.name);
-      btn.textContent='✓ Added!';btn.classList.add('added');
-      setTimeout(()=>{btn.textContent='+ Add to Cart';btn.classList.remove('added');},1500);
-      num.textContent='1';
+      btn.textContent = '✓ Added!';
+      btn.classList.add('added');
+      setTimeout(() => { btn.textContent = '+ Add to Cart'; btn.classList.remove('added'); }, 1500);
+      num.textContent = '1';
     });
     div.querySelector('.lb-trigger').addEventListener('click',()=>{
       openLB(JSON.parse(div.querySelector('.lb-trigger').getAttribute('data-images')),

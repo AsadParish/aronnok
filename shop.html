@@ -29,6 +29,26 @@
   @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
   .product img{cursor:zoom-in;transition:transform .2s ease}
   .product img:hover{transform:scale(1.02)}
+  /* Image wrapper with "Click to View" label */
+  .product-img-wrap{position:relative;overflow:hidden;display:block}
+  .product-img-wrap .img-hint{
+    position:absolute;bottom:0;left:0;right:0;
+    background:rgba(0,0,0,0.45);
+    color:#fff;font-size:11px;text-align:center;
+    padding:6px 4px;
+    opacity:0;
+    transition:opacity .25s ease;
+    pointer-events:none;
+    font-family:inherit;
+    letter-spacing:0.02em;
+  }
+  .product-img-wrap:hover .img-hint{opacity:1}
+  /* Product ID */
+  .product-id{
+    font-size:11px;color:#aaa;
+    margin:2px 0 4px;
+    letter-spacing:0.05em;
+  }
   /* CART */
   .cart-float{position:fixed;bottom:80px;right:20px;background:#2e7d32;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;cursor:pointer;box-shadow:0 4px 16px rgba(46,125,50,.4);z-index:7000;border:none;transition:background .2s,transform .2s}
   .cart-float:hover{background:#1b5e20;transform:scale(1.06)}
@@ -369,9 +389,13 @@ fetch('products.json').then(r=>r.json()).then(products=>{
     }
     const div=document.createElement('div');div.className='product';
     div.innerHTML=`
-      <img src="${imgs[0]}" alt="${p.name}" class="lb-trigger" data-caption="${p.name}" data-images='${JSON.stringify(imgs)}'>
+      <div class="product-img-wrap">
+        <img src="${imgs[0]}" alt="${p.name}" class="lb-trigger" data-caption="${p.name}" data-images='${JSON.stringify(imgs)}'>
+        <span class="img-hint">🔍 Click to View Larger Image</span>
+      </div>
       <div class="product-info">
         <h3>${p.name}</h3>
+        ${p.id ? `<div class="product-id">ID: ${p.id}</div>` : ''}
         <p class="planter-line">(Including Decorative Planter Box)
           <button class="spec-btn" type="button">Specifications</button></p>
         <div class="price-row"><span class="price-current">${p.price}</span>${origH}</div>
@@ -400,7 +424,7 @@ fetch('products.json').then(r=>r.json()).then(products=>{
       setTimeout(() => { btn.textContent = '+ Add to Cart'; btn.classList.remove('added'); }, 1500);
       num.textContent = '1';
     });
-    div.querySelector('.lb-trigger').addEventListener('click',()=>{
+    div.querySelector('.product-img-wrap').addEventListener('click',()=>{
       openLB(JSON.parse(div.querySelector('.lb-trigger').getAttribute('data-images')),
              div.querySelector('.lb-trigger').getAttribute('data-caption'));
     });

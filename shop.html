@@ -347,13 +347,13 @@ fetch('products.json').then(r=>r.json()).then(products=>{
     inc.addEventListener('click',()=>{num.textContent=parseInt(num.textContent)+1;});
     btn.addEventListener('click',()=>{
       const qty=parseInt(num.textContent);
+      const wasEmpty = cart.length === 0;
       addToCart(btn.dataset.name,parseFloat(btn.dataset.price),btn.dataset.img,qty);
       showToast(btn.dataset.name);
       btn.textContent='✓ Added!';btn.classList.add('added');
       setTimeout(()=>{btn.textContent='+ Add to Cart';btn.classList.remove('added');},1500);
       num.textContent='1';
-      // only auto-open cart on FIRST add
-      if(getCount()===qty)openCart();
+      if(wasEmpty) openCart();
     });
     div.querySelector('.lb-trigger').addEventListener('click',()=>{
       openLB(JSON.parse(div.querySelector('.lb-trigger').getAttribute('data-images')),

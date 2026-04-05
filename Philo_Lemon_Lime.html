@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philodendron Lemon Lime – Aronnok</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f9fdf9;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  /* ── Top/Bottom nav bar ── */
+  .nav-bar {
+    text-align: center;
+    padding: 10px 16px;
+    background: #f5f5f0;
+    border-bottom: 1px solid #ddd;
+  }
+  .nav-bar.bottom {
+    border-bottom: none;
+    border-top: 1px solid #ddd;
+    margin-top: 0;
+  }
+  .nav-bar a {
+    color: #2e7d32;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-bar a:hover { opacity: 0.75; }
+
+  /* ── Page wrapper ── */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 56px;
+  }
+
+  /* ── Plant name ── */
+  .plant-name {
+    text-align: center;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 28px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .plant-name span {
+    font-weight: 300;
+    font-style: italic;
+    color: #5a7a5a;
+    font-size: 0.65em;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Image ── */
+  .plant-img-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .plant-img-wrap img {
+    max-width: 420px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(46,125,50,0.13);
+    display: inline-block;
+  }
+
+  /* ── Two-column care info ── */
+  .care-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .care-col {
+    background: #fff;
+    border: 1px solid #e4ede4;
+    border-radius: 10px;
+    padding: 28px 26px;
+  }
+
+  /* Column header flag */
+  .care-col-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e4ede4;
+  }
+  .care-col-flag {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .care-col-lang {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #2e7d32;
+  }
+
+  /* Bangla column */
+  .care-col.bangla p {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: #333;
+    margin: 0 0 14px;
+  }
+
+  /* English column */
+  .care-col.english p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #333;
+    margin: 0 0 14px;
+  }
+
+  .care-col p:last-child { margin-bottom: 0; }
+
+  /* Inline labels like "আলো:", "Light:" */
+  .care-col p strong {
+    font-weight: 600;
+    color: #2e7d32;
+  }
+
+  /* Non-toxic badge */
+  .nontoxic-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-top: 10px;
+    border: 1px solid #a5d6a7;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 680px) {
+    .page { padding: 32px 16px 40px; }
+    .care-grid { grid-template-columns: 1fr; gap: 20px; }
+    .plant-img-wrap img { max-width: 100%; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Top nav -->
+<div class="nav-bar">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+<div class="page">
+
+  <!-- Plant name -->
+  <h1 class="plant-name">
+    Philodendron Lemon Lime
+    <span>ফিলোডেনড্রন লেমন লাইম</span>
+  </h1>
+
+  <!-- Image -->
+  <div class="plant-img-wrap">
+    <img
+      src="assets/Philo_Lem_Lime_00.png"
+      alt="Philodendron Lemon Lime"
+    >
+  </div>
+
+  <!-- Two-column care info -->
+  <div class="care-grid">
+
+    <!-- BANGLA -->
+    <div class="care-col bangla">
+      <div class="care-col-header">
+        <span class="care-col-flag">🇧🇩</span>
+        <span class="care-col-lang">বাংলা</span>
+      </div>
+
+      <p>ফিলোডেনড্রন লেমন লাইম উজ্জ্বল লেমন-হলুদ রঙের হৃদপিণ্ডাকৃতির পাতার জন্য পরিচিত একটি জনপ্রিয় ইনডোর প্ল্যান্ট। এটি উজ্জ্বল, পরোক্ষ আলো এবং মাঝারি আর্দ্রতা পছন্দ করে। মাটি শুকালে পানি দিন এবং নিয়মিত ছাঁটাই করলে এটি ঝাকড়া ও সুন্দর থাকে।</p>
+
+      <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
+      <p><strong>আলো:</strong> উজ্জ্বল, পরোক্ষ আলো দিন। সরাসরি সূর্যালোক পাতা ঝলসে দিতে পারে এবং বিবর্ণ করে তুলতে পারে।</p>
+      <p><strong>পানি দেওয়া:</strong> মাটি সবসময় আর্দ্র রাখুন, কিন্তু কাদাকাদা করবেন না। মাটির উপরের এক ইঞ্চি শুকিয়ে গেলে জল দিন, সাধারণত প্রতি ৪–৬ দিন অন্তর।</p>
+      <p><strong>আর্দ্রতা:</strong> উচ্চ আর্দ্রতা অত্যন্ত গুরুত্বপূর্ণ; প্রয়োজন হলে জলীয় বাষ্প ছিটিয়ে দিন।</p>
+      <p><strong>তাপমাত্রা:</strong> উষ্ণ তাপমাত্রা বজায় রাখুন এবং ঠান্ডা বাতাসের ঝাপটা থেকে দূরে রাখুন।</p>
+      <p><strong>মাটি:</strong> বায়ু চলাচলযোগ্য পটিং মিক্স ব্যবহার করুন, যেমন পিট মস বা কোকো পিটযুক্ত মিশ্রণ।</p>
+      <p><strong>সার:</strong> বৃদ্ধির মরসুমে (বসন্ত ও গ্রীষ্মকালে) মাসে একবার সুষম ও পাতলা তরল সার প্রয়োগ করা যেতে পারে।</p>
+      <p><strong>ছাঁটাই:</strong> ঘন ঝাকড়া করার জন্য নিয়মিত লতানো অংশ ছাঁটাই করুন।</p>
+
+      <div class="nontoxic-badge">🐾 পোষা প্রাণীদের জন্য বিষাক্ত নয়</div>
+    </div>
+
+    <!-- ENGLISH -->
+    <div class="care-col english">
+      <div class="care-col-header">
+        <span class="care-col-flag">🌿</span>
+        <span class="care-col-lang">English</span>
+      </div>
+
+      <p>Philodendron Lemon Lime is a popular indoor plant known for its bright lemon-yellow heart-shaped leaves. It likes bright, indirect light and moderate humidity. Water when the soil is dry and prune regularly to keep it bushy and beautiful.</p>
+
+      <p><strong>Detailed Care Instructions:</strong></p>
+      <p><strong>Light:</strong> Provide bright, indirect light. Direct sunlight can scorch the leaves and cause them to discolor.</p>
+      <p><strong>Watering:</strong> Keep the soil moist at all times, but not soggy. Water when the top inch of soil is dry, usually every 4–6 days.</p>
+      <p><strong>Humidity:</strong> High humidity is very important; mist as needed.</p>
+      <p><strong>Temperature:</strong> Maintain warm temperatures and keep away from cold drafts.</p>
+      <p><strong>Soil:</strong> Use an airy potting mix, such as a mix containing peat moss or coco peat.</p>
+      <p><strong>Fertilizer:</strong> A balanced, diluted liquid fertilizer can be applied once a month during the growing season (spring and summer).</p>
+      <p><strong>Pruning:</strong> Prune creeping parts regularly to create a dense clump.</p>
+
+      <div class="nontoxic-badge">🐾 Not toxic to pets</div>
+    </div>
+
+  </div><!-- /care-grid -->
+
+</div><!-- /page -->
+
+<!-- Bottom nav -->
+<div class="nav-bar bottom">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coin Plant – Aronnok</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'DM Sans', sans-serif; background: #f9fdf9; color: #1a1a1a; margin: 0; }
+  .nav-bar { text-align: center; padding: 10px 16px; background: #f5f5f0; border-bottom: 1px solid #ddd; }
+  .nav-bar.bottom { border-bottom: none; border-top: 1px solid #ddd; margin-top: 0; }
+  .nav-bar a { color: #2e7d32; font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .nav-bar a:hover { opacity: 0.75; }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 32px 56px; }
+  .plant-name { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: #2e7d32; margin-bottom: 28px; font-family: 'DM Sans', sans-serif; letter-spacing: -0.01em; }
+  .plant-name span { font-weight: 300; font-style: italic; color: #5a7a5a; font-size: 0.65em; display: block; margin-top: 4px; letter-spacing: 0.04em; }
+  .plant-img-wrap { text-align: center; margin-bottom: 40px; }
+  .plant-img-wrap img { max-width: 420px; width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(46,125,50,0.13); display: inline-block; }
+  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+  .care-col { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 28px 26px; }
+  .care-col-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; }
+  .care-col-flag { font-size: 20px; line-height: 1; }
+  .care-col-lang { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #2e7d32; }
+  .care-col.bangla p { font-family: 'Hind Siliguri', sans-serif; font-size: 14.5px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+  .care-col.english p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.85; color: #333; margin: 0 0 14px; }
+  .care-col p:last-child { margin-bottom: 0; }
+  .care-col p strong { font-weight: 600; color: #2e7d32; }
+  .nontoxic-badge { display: inline-flex; align-items: center; gap: 6px; background: #e8f5e9; color: #2e7d32; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 100px; margin-top: 10px; border: 1px solid #a5d6a7; }
+  .toxic-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff3e0; color: #e65100; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 100px; margin-top: 10px; border: 1px solid #ffcc80; }
+  .planter-section { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 32px 28px; margin-bottom: 48px; }
+  .planter-section-header { font-size: 16px; font-weight: 700; color: #2e7d32; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; font-family: 'DM Sans', sans-serif; }
+  .planter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .planter-col.bangla p { font-family: 'Hind Siliguri', sans-serif; font-size: 14.5px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+  .planter-col.english p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.85; color: #333; margin: 0 0 14px; }
+  .planter-col p:last-child { margin-bottom: 0; }
+  @media (max-width: 680px) {
+    .page { padding: 32px 16px 40px; }
+    .care-grid { grid-template-columns: 1fr; gap: 20px; }
+    .planter-grid { grid-template-columns: 1fr; gap: 20px; }
+    .plant-img-wrap img { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+<div class="page">
+
+  <h1 class="plant-name">
+    Coin Plant
+    <span>কয়েন প্ল্যান্ট &nbsp;·&nbsp; <em>Pilea peperomioides</em></span>
+  </h1>
+
+  <div class="plant-img-wrap">
+    <img src="assets/Coin_Plant_00.png" alt="Coin Plant">
+  </div>
+
+  <!-- Planter Box -->
+  <div class="planter-section">
+    <div class="planter-section-header">🪴 প্ল্যান্টার বক্স সম্পর্কে / About the Planter Box</div>
+    <div class="planter-grid">
+      <div class="planter-col bangla">
+
+        <p>এই ছোট্ট পটে দাঁড়িয়ে থাকা একা গাছটা যেন আমাদের নিজস্ব একাকীত্বের প্রতীক; নীরবে প্রশ্ন তোলে— "পৃথিবীতে কে কাহার?"; পোস্টমাস্টার-এ রবি ঠাকুরের সেই অমোঘ বাণীর প্রতিধ্বনি হয়ে। চারপাশের রঙ বদলায়, সময় বয়ে চলে, মানুষ আসে-যায়; তবু সে দাঁড়িয়ে থাকে, নিজের মতো করে!</p>
+        <p>আসলে গুরুত্বপূর্ণ একটা প্রশ্ন রয়ে যায়— একাকীত্ব কি তাকে ভাঙে, নাকি গড়ে তোলে? ঝড়, নিঃসঙ্গতা কিংবা অনিশ্চয়তা কি মানুষকে দৃঢ় করে না? সবসময় চোখে পড়ে না, তবু আমাদের মনে হয়— হয়তো সেখানেই তার শক্তি; যেন সে-ই শেষ পর্যন্ত "দ্যা লাষ্ট ম্যান স্ট্যান্ডিং"!</p>
+        <p>বক্সটা তৈরি করা হয়েছে ৫ মিলিমিটারের পিভিসি শীট ব্যবহার করে; এটা বেশ টেকসই। আঁকা হয়েছে এক্রেলিক ব্যবহার করে; তার উপর সীলার ব্যবহার করে আরেকটু ডিউরেবল করা হয়েছে চিত্রটাকে। পানিতে লম্বা সময় না থাকলে বক্সটার ক্ষতি হবে না।</p>
+
+      </div>
+      <div class="planter-col english">
+
+        <p>This solitary plant standing in its little pot feels like a symbol of our own solitude — silently raising the question, "Who belongs to whom in this world?" — echoing Rabindranath Tagore's timeless words from <em>The Postmaster</em>. Colors change around it, time flows on, people come and go; yet it stands, steadfast, in its own quiet way.</p>
+        <p>And yet an important question lingers — does loneliness break it, or shape it? Does not hardship, solitude, and uncertainty ultimately make us stronger? It may not always catch the eye, but we sense that perhaps therein lies its strength — as if it is, in the end, "The Last Man Standing."</p>
+        <p>The box is crafted from 5mm PVC sheet, making it quite durable. It is painted with acrylics, and a sealer has been applied over the artwork to make it even more long-lasting. As long as it is not submerged in water for extended periods, the box will remain undamaged.</p>
+
+      </div>
+    </div>
+
+  <!-- Care Info -->
+  <div class="care-grid">
+
+    <div class="care-col bangla">
+      <div class="care-col-header">
+        <span class="care-col-flag">🇧🇩</span>
+        <span class="care-col-lang">বাংলা</span>
+      </div>
+      <p>কয়েন প্ল্যান্টের গোলাকার পাতা পয়সার মতো। গোড়ায় 'বাচ্চা' তৈরি করে — যা উপহার দেওয়া যায়। মিনিমালিস্ট ডিজাইনের সাথে দারুণ মানানসই।</p>
+      <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
+      <p><strong>আলো:</strong> উজ্জ্বল পরোক্ষ আলো। পাত্র মাঝেমধ্যে ঘোরান যাতে সমানভাবে বাড়ে।</p>
+      <p><strong>তাপমাত্রা:</strong> ১৩°C – ৩০°C।</p>
+      <p><strong>মাটি:</strong> ভালো ড্রেনেজযুক্ত লোমি বা পটিং মিক্স।</p>
+      <p><strong>সার:</strong> বসন্ত-গ্রীষ্মে মাসে একবার সুষম সার।</p>
+      <p><strong>পানি দেওয়া:</strong> মাটি শুকালে পানি দিন। অতিরিক্ত পানি দেবেন না।</p>
+      <p><strong>ছাঁটাই:</strong> গোড়ার ছোট চারা আলাদা করে নতুন টবে লাগান।</p>
+      <p><strong>সমস্যা ও সমাধান:</strong> পাতা ঝরা = পানির অভাব। শিকড় পচা = অতিরিক্ত পানি।</p>
+      <p><strong>সতর্কতা:</strong> মানুষ ও পোষা প্রাণীর জন্য বিষমুক্ত।</p>
+
+      <div class="nontoxic-badge">🐾 ✅ মানুষ ও পোষা প্রাণীর জন্য নিরাপদ</div>
+    </div>
+
+    <div class="care-col english">
+      <div class="care-col-header">
+        <span class="care-col-flag">🌿</span>
+        <span class="care-col-lang">English</span>
+      </div>
+      <p>The Coin Plant is the botanical equivalent of a generous friend — it proliferates babies at its base, grows them quietly, and sends you off with armfuls to share. Its perfectly round, coin-shaped leaves float on long stems with a buoyancy that feels almost playful. At home in Scandinavian minimalism and maximalist eclecticism alike, it asks only for good light and honest watering.</p>
+      <p><strong>Detailed Care Instructions:</strong></p>
+      <p><strong>Light:</strong> Bright indirect light. Rotate the pot occasionally so the plant grows evenly on all sides.</p>
+      <p><strong>Temperature:</strong> 13°C–30°C — adaptable across a wide range.</p>
+      <p><strong>Soil:</strong> Loamy or well-draining potting mix. Perlite improves drainage.</p>
+      <p><strong>Fertiliser:</strong> Balanced feed once a month through spring and summer. Less is genuinely more here.</p>
+      <p><strong>Watering:</strong> Water when the topsoil dries. This plant tolerates mild dryness better than it tolerates excess.</p>
+      <p><strong>Pruning:</strong> Separate the offset babies at the base and pot them independently — they root quickly.</p>
+      <p><strong>Problems & Solutions:</strong> Leaf drop signals underwatering; root rot signals overwatering. Both are easily corrected.</p>
+      <p><strong>Caution:</strong> Non-toxic to people and pets — a safe choice for busy households.</p>
+
+      <div class="nontoxic-badge">🐾 ✅ Safe for people and pets</div>
+    </div>
+
+  </div><!-- /care-grid -->
+  </div><!-- /planter-section -->
+
+</div><!-- /page -->
+
+<div class="nav-bar bottom">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+</body>
+</html>

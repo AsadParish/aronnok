@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Plant – Aronnok</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'DM Sans', sans-serif; background: #f9fdf9; color: #1a1a1a; margin: 0; }
+  .nav-bar { text-align: center; padding: 10px 16px; background: #f5f5f0; border-bottom: 1px solid #ddd; }
+  .nav-bar.bottom { border-bottom: none; border-top: 1px solid #ddd; margin-top: 0; }
+  .nav-bar a { color: #2e7d32; font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
+  .nav-bar a:hover { opacity: 0.75; }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 32px 56px; }
+  .plant-name { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: #2e7d32; margin-bottom: 28px; font-family: 'DM Sans', sans-serif; letter-spacing: -0.01em; }
+  .plant-name span { font-weight: 300; font-style: italic; color: #5a7a5a; font-size: 0.65em; display: block; margin-top: 4px; letter-spacing: 0.04em; }
+  .plant-img-wrap { text-align: center; margin-bottom: 40px; }
+  .plant-img-wrap img { max-width: 420px; width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(46,125,50,0.13); display: inline-block; }
+  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+  .care-col { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 28px 26px; }
+  .care-col-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; }
+  .care-col-flag { font-size: 20px; line-height: 1; }
+  .care-col-lang { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #2e7d32; }
+  .care-col.bangla p { font-family: 'Hind Siliguri', sans-serif; font-size: 14.5px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+  .care-col.english p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.85; color: #333; margin: 0 0 14px; }
+  .care-col p:last-child { margin-bottom: 0; }
+  .care-col p strong { font-weight: 600; color: #2e7d32; }
+  .nontoxic-badge { display: inline-flex; align-items: center; gap: 6px; background: #e8f5e9; color: #2e7d32; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 100px; margin-top: 10px; border: 1px solid #a5d6a7; }
+  .toxic-badge { display: inline-flex; align-items: center; gap: 6px; background: #fff3e0; color: #e65100; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 100px; margin-top: 10px; border: 1px solid #ffcc80; }
+  .planter-section { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 32px 28px; margin-bottom: 48px; }
+  .planter-section-header { font-size: 16px; font-weight: 700; color: #2e7d32; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; font-family: 'DM Sans', sans-serif; }
+  .planter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .planter-col.bangla p { font-family: 'Hind Siliguri', sans-serif; font-size: 14.5px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+  .planter-col.english p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.85; color: #333; margin: 0 0 14px; }
+  .planter-col p:last-child { margin-bottom: 0; }
+  @media (max-width: 680px) {
+    .page { padding: 32px 16px 40px; }
+    .care-grid { grid-template-columns: 1fr; gap: 20px; }
+    .planter-grid { grid-template-columns: 1fr; gap: 20px; }
+    .plant-img-wrap img { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="nav-bar">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+<div class="page">
+
+  <h1 class="plant-name">
+    Money Plant
+    <span>মানি প্ল্যান্ট &nbsp;·&nbsp; <em>Epipremnum aureum</em></span>
+  </h1>
+
+  <div class="plant-img-wrap">
+    <img src="assets/Money_Plant_00.png" alt="Money Plant">
+  </div>
+
+  <!-- Planter Box -->
+  <div class="planter-section">
+    <div class="planter-section-header">🪴 প্ল্যান্টার বক্স সম্পর্কে / About the Planter Box</div>
+    <div class="planter-grid">
+      <div class="planter-col bangla">
+
+        <p>এই ছোট্ট পটে দাঁড়িয়ে থাকা একা গাছটা যেন আমাদের নিজস্ব একাকীত্বের প্রতীক; নীরবে প্রশ্ন তোলে— "পৃথিবীতে কে কাহার?"; পোস্টমাস্টার-এ রবি ঠাকুরের সেই অমোঘ বাণীর প্রতিধ্বনি হয়ে। চারপাশের রঙ বদলায়, সময় বয়ে চলে, মানুষ আসে-যায়; তবু সে দাঁড়িয়ে থাকে, নিজের মতো করে!</p>
+        <p>আসলে গুরুত্বপূর্ণ একটা প্রশ্ন রয়ে যায়— একাকীত্ব কি তাকে ভাঙে, নাকি গড়ে তোলে? ঝড়, নিঃসঙ্গতা কিংবা অনিশ্চয়তা কি মানুষকে দৃঢ় করে না? সবসময় চোখে পড়ে না, তবু আমাদের মনে হয়— হয়তো সেখানেই তার শক্তি; যেন সে-ই শেষ পর্যন্ত "দ্যা লাষ্ট ম্যান স্ট্যান্ডিং"!</p>
+        <p>বক্সটা তৈরি করা হয়েছে ৫ মিলিমিটারের পিভিসি শীট ব্যবহার করে; এটা বেশ টেকসই। আঁকা হয়েছে এক্রেলিক ব্যবহার করে; তার উপর সীলার ব্যবহার করে আরেকটু ডিউরেবল করা হয়েছে চিত্রটাকে। পানিতে লম্বা সময় না থাকলে বক্সটার ক্ষতি হবে না।</p>
+
+      </div>
+      <div class="planter-col english">
+
+        <p>This solitary plant standing in its little pot feels like a symbol of our own solitude — silently raising the question, "Who belongs to whom in this world?" — echoing Rabindranath Tagore's timeless words from <em>The Postmaster</em>. Colors change around it, time flows on, people come and go; yet it stands, steadfast, in its own quiet way.</p>
+        <p>And yet an important question lingers — does loneliness break it, or shape it? Does not hardship, solitude, and uncertainty ultimately make us stronger? It may not always catch the eye, but we sense that perhaps therein lies its strength — as if it is, in the end, "The Last Man Standing."</p>
+        <p>The box is crafted from 5mm PVC sheet, making it quite durable. It is painted with acrylics, and a sealer has been applied over the artwork to make it even more long-lasting. As long as it is not submerged in water for extended periods, the box will remain undamaged.</p>
+
+      </div>
+    </div>
+
+  <!-- Care Info -->
+  <div class="care-grid">
+
+    <div class="care-col bangla">
+      <div class="care-col-header">
+        <span class="care-col-flag">🇧🇩</span>
+        <span class="care-col-lang">বাংলা</span>
+      </div>
+      <p>মানি প্ল্যান্ট বাংলাদেশের সবচেয়ে পরিচিত ও জনপ্রিয় ইনডোর গাছগুলোর মধ্যে একটি। এর হৃদয়াকৃতির চকচকে সবুজ পাতা ঘরের যেকোনো কোণকে সতেজ ও প্রাণবন্ত করে তোলে। বিশ্বাস করা হয় যে এই গাছ ঘরে সুখ, সমৃদ্ধি ও ইতিবাচক শক্তি নিয়ে আসে। NASA-র গবেষণায় দেখা গেছে এটি বাতাস থেকে ফর্মালডিহাইড, বেনজিন ও কার্বন মনোক্সাইড শোষণ করে। মাটিতে বা পানিতে — দুভাবেই জন্মানো যায়।</p>
+      <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
+      <p><strong>আলো:</strong> উজ্জ্বল পরোক্ষ আলো থেকে কম আলোতেও ভালো জন্মে। সরাসরি রোদে পাতা পুড়ে ও রঙ ফিকে হয়।</p>
+      <p><strong>তাপমাত্রা:</strong> ১৫°C – ৩০°C। বাংলাদেশের উষ্ণ আবহাওয়ায় দারুণভাবে বেড়ে ওঠে।</p>
+      <p><strong>মাটি:</strong> সাধারণ পটিং মিক্স বা লোমি মাটি। ভালো জলনিষ্কাশন নিশ্চিত করুন।</p>
+      <p><strong>সার:</strong> মাসে একবার সুষম তরল সার দিন। গ্রীষ্মে সার বেশি কার্যকর।</p>
+      <p><strong>পানি দেওয়া:</strong> সপ্তাহে ১ বার। পানিতেও জন্মানো যায় — স্বচ্ছ বোতলে শিকড়ের বৃদ্ধি দেখা যায়।</p>
+      <p><strong>ছাঁটাই:</strong> লম্বা হলে ডগা কেটে আকার ঠিক রাখুন। কাটা অংশ পানিতে রেখে নতুন গাছ করা যায়।</p>
+      <p><strong>সমস্যা ও সমাধান:</strong> হলুদ পাতা মানে অতিরিক্ত পানি — কমান। স্পাইডার মাইট বা মিলিবাগের জন্য নিম তেল ব্যবহার করুন।</p>
+      <p><strong>সতর্কতা:</strong> ক্যালসিয়াম অক্সালেট থাকায় বিষাক্ত — শিশু ও পোষা প্রাণী থেকে দূরে রাখুন।</p>
+
+      <div class="toxic-badge">🐾 ⚠️ বিষাক্ত — শিশু ও পোষা প্রাণী থেকে দূরে রাখুন</div>
+    </div>
+
+    <div class="care-col english">
+      <div class="care-col-header">
+        <span class="care-col-flag">🌿</span>
+        <span class="care-col-lang">English</span>
+      </div>
+      <p>Few plants have woven themselves so deeply into Bengali homes as the Money Plant. Heart-shaped leaves, glossy as morning dew, cascade from shelves and trail across walls, carrying with them old beliefs of prosperity and good fortune. NASA research has confirmed what intuition long suspected — this vine quietly cleanses the air of formaldehyde, benzene, and carbon monoxide. Grow it in soil or a glass of water; it asks only for a little light and a little love.</p>
+      <p><strong>Detailed Care Instructions:</strong></p>
+      <p><strong>Light:</strong> Adapts gracefully from bright indirect light to dim corners. Avoid harsh direct sun, which bleaches the leaves of their vibrant green.</p>
+      <p><strong>Temperature:</strong> 15°C–30°C. Flourishes naturally in Bangladesh's warm, humid climate.</p>
+      <p><strong>Soil:</strong> Standard potting mix or loamy soil works well. Good drainage is the one non-negotiable.</p>
+      <p><strong>Fertiliser:</strong> A balanced liquid feed once a month. Summer, when growth surges, is the season it benefits most.</p>
+      <p><strong>Watering:</strong> Once a week. It can also be grown in a clear vessel of water — watching roots unfurl beneath the surface is a quiet wonder.</p>
+      <p><strong>Pruning:</strong> Trim long vines to keep shape. Cuttings root effortlessly in water — one plant becomes many.</p>
+      <p><strong>Problems & Solutions:</strong> Yellow leaves signal overwatering — ease back. For spider mites or mealybugs, neem oil is the remedy.</p>
+      <p><strong>Caution:</strong> Contains calcium oxalate — keep away from children and pets who might be tempted to nibble.</p>
+
+      <div class="toxic-badge">🐾 ⚠️ Toxic — keep away from children and pets</div>
+    </div>
+
+  </div><!-- /care-grid -->
+  </div><!-- /planter-section -->
+
+</div><!-- /page -->
+
+<div class="nav-bar bottom">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+</body>
+</html>

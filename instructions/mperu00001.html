@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monstera Peru – Aronnok</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f9fdf9;
+    color: #1a1a1a;
+    margin: 0;
+  }
+
+  /* ── Top/Bottom nav bar ── */
+  .nav-bar {
+    text-align: center;
+    padding: 10px 16px;
+    background: #f5f5f0;
+    border-bottom: 1px solid #ddd;
+  }
+  .nav-bar.bottom {
+    border-bottom: none;
+    border-top: 1px solid #ddd;
+    margin-top: 0;
+  }
+  .nav-bar a {
+    color: #2e7d32;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-bar a:hover { opacity: 0.75; }
+
+  /* ── Page wrapper ── */
+  .page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 32px 56px;
+  }
+
+  /* ── Plant name ── */
+  .plant-name {
+    text-align: center;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 28px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: -0.01em;
+  }
+  .plant-name span {
+    font-weight: 300;
+    font-style: italic;
+    color: #5a7a5a;
+    font-size: 0.65em;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Image ── */
+  .plant-img-wrap {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .plant-img-wrap img {
+    max-width: 420px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(46,125,50,0.13);
+    display: inline-block;
+  }
+
+  /* ── Two-column care info ── */
+  .care-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .care-col {
+    background: #fff;
+    border: 1px solid #e4ede4;
+    border-radius: 10px;
+    padding: 28px 26px;
+  }
+
+  /* Column header flag */
+  .care-col-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e4ede4;
+  }
+  .care-col-flag {
+    font-size: 20px;
+    line-height: 1;
+  }
+  .care-col-lang {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #2e7d32;
+  }
+
+  /* Bangla column */
+  .care-col.bangla p {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: #333;
+    margin: 0 0 14px;
+  }
+
+  /* English column */
+  .care-col.english p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #333;
+    margin: 0 0 14px;
+  }
+
+  .care-col p:last-child { margin-bottom: 0; }
+
+  /* Inline labels */
+  .care-col p strong {
+    font-weight: 600;
+    color: #2e7d32;
+  }
+
+  /* Gentle care-note badge */
+  .toxic-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff8e8;
+    color: #8a6d1c;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-top: 10px;
+    border: 1px solid #ecd9a3;
+  }
+
+  /* ── Planter box section ── */
+  .planter-section {
+    background: #fff;
+    border: 1px solid #e4ede4;
+    border-radius: 10px;
+    padding: 32px 28px;
+    margin-bottom: 48px;
+  }
+
+  .planter-section-header {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e4ede4;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .planter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .planter-col.bangla p {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: #333;
+    margin: 0 0 14px;
+  }
+
+  .planter-col.english p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: #333;
+    margin: 0 0 14px;
+  }
+
+  .planter-col p:last-child { margin-bottom: 0; }
+
+  /* Poem quote */
+  .planter-col .poem {
+    font-style: italic;
+    color: #5a7a5a;
+    border-left: 3px solid #cfe3cf;
+    padding-left: 14px;
+  }
+  .planter-col .poem .poem-by {
+    display: block;
+    margin-top: 4px;
+    font-style: normal;
+    font-size: 12.5px;
+    color: #7a8f7a;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 680px) {
+    .page { padding: 32px 16px 40px; }
+    .care-grid { grid-template-columns: 1fr; gap: 20px; }
+    .planter-grid { grid-template-columns: 1fr; gap: 20px; }
+    .plant-img-wrap img { max-width: 100%; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Top nav -->
+<div class="nav-bar">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+<div class="page">
+
+  <!-- Plant name -->
+  <h1 class="plant-name">
+    Monstera Peru
+    <span>মনস্টেরা পেরু</span>
+  </h1>
+
+  <!-- Image -->
+  <div class="plant-img-wrap">
+    <img
+      src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/Monstera_Peru_00.png"
+      alt="Monstera Peru"
+    >
+  </div>
+
+  <!-- Planter Box Section -->
+  <div class="planter-section">
+    <div class="planter-section-header">🪴 প্ল্যান্টার বক্স সম্পর্কে / About the Planter Box</div>
+    <div class="planter-grid">
+
+      <div class="planter-col bangla">
+        <p class="poem">"সমস্ত দিনের শেষে শিশিরের শব্দের মতো / সন্ধ্যা আসে।"<span class="poem-by">— জীবনানন্দ দাশ</span></p>
+        <p>এই প্ল্যান্টারের ছবিটাও যেন তেমনই এক সন্ধ্যা ডেকে আনে! আকাশ গাঢ় হয়ে আসে, পৃথিবীর সব রঙ একে একে নিভে যায়, সব পাখি ঘরে ফেরে, আর ঠিক তখনই জলের ধারে "জোনাকির রঙে ঝিলমিল" করে জ্বলে ওঠে ছোট ছোট হলুদ আলোর সারি।</p>
+        <p>সেই আলোর সারি ধরেই পৌঁছে যাওয়া যায় নিরিবিলি লেকের কোলে দাঁড়িয়ে থাকা ছোট্ট কাঠের জেটিতে- ক্লান্ত একটা দিনের পরে ফিরে আসার নিভৃত আশ্রয়। চারপাশে রাত নামে, রঙ বদলায়, তবু আলোগুলো জেগে থাকে; যেন কেউ একজন পথ চেয়ে বসে আছে, ফিরে আসার অপেক্ষায়।</p>
+        <p>এই প্ল্যান্টারটা তেমনই একটা জেগে থাকা আলো- আপনাকেও মনে করিয়ে দেবে ঘরে ফেরার কথা, আর প্রতিটি সন্ধ্যার ওপারে অপেক্ষা করা নতুন এক ভোরের কথা!</p>
+        <p>এই বক্সটা তৈরি করা হয়েছে ৫ মিলিমিটারের পিভিসি শীট ব্যবহার করে; এটা বেশ টেকসই। প্ল্যান্টারটা আঁকা হয়েছে এক্রেলিক ব্যবহার করে; তার উপর সীলার (ভার্নিশ) ব্যবহার করে আরেকটু টেকসই করা হয়েছে সেটটাকে। এটা পানিরোধী। পানিতে লম্বা সময় না থাকলে বক্সটার কোনো ক্ষতি হবে না।</p>
+      </div>
+
+      <div class="planter-col english">
+        <p class="poem">"At the end of all days, like the sound of dew / comes evening."<span class="poem-by">— Jivanananda Das</span></p>
+        <p>The picture of this planter also seems to evoke such an evening! The sky darkens, all the colors of the world fade away one by one, all the birds return home, and just then, a row of small yellow lights "glitters with the color of fireflies" on the water's edge.</p>
+        <p>Following that row of lights, one can reach the small wooden jetty standing on the lap of the quiet lake - a secluded refuge to return to after a tiring day. Night falls all around, the colors change, but the lights remain awake; as if someone is sitting looking for the way, waiting to return.</p>
+        <p>This planter is such an awake light - it will remind you of returning home, and of a new dawn waiting on the other side of every evening!</p>
+        <p>This box is made using 5 millimeter PVC sheet; it is quite durable. The planter is painted using acrylic; the set has been made more durable by using a sealer (varnish). It is waterproof. Unless it is exposed to water for a long time, there will be no damage to the box.</p>
+      </div>
+
+    </div>
+
+  <!-- Two-column care info -->
+  <div class="care-grid">
+
+    <!-- BANGLA -->
+    <div class="care-col bangla">
+      <div class="care-col-header">
+        <span class="care-col-flag">🇧🇩</span>
+        <span class="care-col-lang">বাংলা</span>
+      </div>
+
+      <p>মনস্টেরা পেরুর পাতার উপরিভাগ একটু ফোলা; টেক্সচারড- স্পর্শ করতেও ভালো লাগে। ছিদ্র নেই, কিন্তু এই অনন্য টেক্সচারই এর পরিচয়।</p>
+
+      <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
+      <p><strong>আলো:</strong> উজ্জ্বল পরোক্ষ আলোতে গাছটা ভালো থাকে। সরাসরি রোদ পাতা পুড়িয়ে দেয়।</p>
+      <p><strong>তাপমাত্রা:</strong> ১৮°C – ২৭°C এর জন্য আদর্শ তাপমাত্রা। ১৩–১৫°C এর নিচে নামলে এর বৃদ্ধি থেমে যায়, তাই ঠান্ডা থেকে রক্ষা করুন।</p>
+      <p><strong>মাটি:</strong> পটিং মিক্স, পার্লাইট ও অর্কিড বার্কের সমন্বয়। এই পটে কাঠের গুড়া, বালু, মাটি এবং কোকো পিট ব্যবহার করা হয়েছে। কখনো মাটি পরিবর্তন করতে হলে এই পটিং মিক্স ব্যবহার করাই ভালো।</p>
+      <p><strong>সার:</strong> বসন্ত-গ্রীষ্মে মাসে একবার NPK 20-20-20 প্রয়োগ করতে পারেন। শীতে সার প্রয়োগ করা যাবে না।</p>
+      <p><strong>পানি দেওয়া:</strong> খুব সাবধানতার সাথে পানি দিন। কেননা, এই প্ল্যান্টারে কোনো ড্রেইনেজ ব্যবস্থা নেই। মাটি শুকিয়ে আসলে (উপরের অর্ধেক শুকালে) পানি দিন। পুরু পাতা একটু খরা সহ্য করে, তাই অতিরিক্ত পানি এড়িয়ে চলুন।</p>
+      <p><strong>ছাঁটাই:</strong> মরা পাতা কেটে ফেলুন। মস পোল দিলে পাতা বড় হবে।</p>
+      <p><strong>সমস্যা ও সমাধান:</strong> মিলিবাগ, স্পাইডার মাইট- নিম তেল স্প্রে করুন।</p>
+
+      <div class="toxic-badge">🌿 এই গাছের পাতা খাওয়ার জন্য নয়। তাই, শিশু ও পোষা প্রাণীর নাগালের বাইরে রাখুন</div>
+    </div>
+
+    <!-- ENGLISH -->
+    <div class="care-col english">
+      <div class="care-col-header">
+        <span class="care-col-flag">🌿</span>
+        <span class="care-col-lang">English</span>
+      </div>
+
+      <p>Monstera Peru (<em>Monstera karstenianum</em> 'Peru') is prized for its thick, glossy leaves with a bubbled, puckered surface that is lovely to the touch. It does not develop holes, yet this unique texture is its signature.</p>
+
+      <p><strong>Detailed Care Instructions:</strong></p>
+      <p><strong>Light:</strong> Bright indirect light. Direct sun scorches the leaves.</p>
+      <p><strong>Temperature:</strong> 18°C – 27°C. Growth slows below 13–15°C, so protect it from cold.</p>
+      <p><strong>Soil:</strong> A well-draining blend of potting mix, perlite, and orchid bark.</p>
+      <p><strong>Fertilizer:</strong> Once a month with a balanced NPK 20-20-20 in spring and summer. Stop in winter.</p>
+      <p><strong>Watering:</strong> Water when the top half of the soil has dried. Its thick leaves tolerate slight drought, so avoid overwatering.</p>
+      <p><strong>Pruning:</strong> Trim dead leaves. Provide a moss pole — it encourages larger leaves.</p>
+      <p><strong>Problems &amp; Solutions:</strong> Root rot, mealybugs, spider mites — treat with a neem oil spray.</p>
+
+      <div class="toxic-badge">🌿 These leaves are not for eating — please keep out of reach of children and pets</div>
+    </div>
+
+  </div><!-- /care-grid -->
+
+  </div><!-- /planter-section -->
+
+</div><!-- /page -->
+
+<!-- Bottom nav -->
+<div class="nav-bar bottom">
+  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+</div>
+
+</body>
+</html>

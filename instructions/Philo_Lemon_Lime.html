@@ -5,160 +5,363 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Philodendron Lemon Lime – Aronnok</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
+
+  :root {
+    --green-900: #14442e;
+    --green-700: #1f6b45;
+    --green-600: #2e7d54;
+    --green-100: #e7f1ea;
+    --gold: #c9a227;
+    --gold-soft: #f4ecd2;
+    --ink: #1f2a24;
+    --muted: #5d6b62;
+    --cream: #f6faf6;
+    --line: #e3ede5;
+  }
+
+  * { box-sizing: border-box; }
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: #f9fdf9;
-    color: #1a1a1a;
+    background:
+      radial-gradient(1200px 500px at 50% -200px, #eaf4ec 0%, rgba(234,244,236,0) 70%),
+      var(--cream);
+    color: var(--ink);
     margin: 0;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* ── Top/Bottom nav bar ── */
   .nav-bar {
-    text-align: center;
-    padding: 10px 16px;
-    background: #f5f5f0;
-    border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 28px;
   }
-  .nav-bar.bottom {
-    border-bottom: none;
-    border-top: 1px solid #ddd;
-    margin-top: 0;
+  .nav-bar.top {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(246,250,246,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    max-width: none;
+    padding-left: max(28px, calc((100% - 1000px) / 2));
+    padding-right: max(28px, calc((100% - 1000px) / 2));
   }
-  .nav-bar a {
-    color: #2e7d32;
-    font-size: 14px;
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .brand .leaf { font-size: 18px; }
+  .brand-logo { height: 32px; width: auto; display: block; }
+  .brand .name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--green-700);
+    letter-spacing: 0.01em;
+  }
+  .brand .name-bn {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--muted);
+  }
+  .nav-link {
+    color: var(--green-700);
+    font-size: 13.5px;
     font-weight: 600;
     text-decoration: none;
-    transition: opacity 0.2s;
+    padding: 8px 14px;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    background: #fff;
+    transition: all 0.2s;
+    white-space: nowrap;
   }
-  .nav-bar a:hover { opacity: 0.75; }
+  .nav-link:hover { border-color: var(--green-600); color: var(--green-900); }
+
+  .nav-bar.bottom { justify-content: center; }
 
   /* ── Page wrapper ── */
   .page {
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 48px 32px 56px;
+    padding: 56px 28px 40px;
   }
 
-  /* ── Plant name ── */
+  /* ── Hero ── */
+  .kicker {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
   .plant-name {
     text-align: center;
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 700;
-    color: #2e7d32;
-    margin-bottom: 28px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    font-weight: 600;
+    color: var(--green-900);
+    margin: 0 0 6px;
     letter-spacing: -0.01em;
   }
   .plant-name span {
-    font-weight: 300;
-    font-style: italic;
-    color: #5a7a5a;
-    font-size: 0.65em;
+    font-family: 'Hind Siliguri', sans-serif;
+    font-weight: 500;
+    color: var(--green-600);
+    font-size: 0.42em;
     display: block;
-    margin-top: 4px;
-    letter-spacing: 0.04em;
+    margin-top: 8px;
+    letter-spacing: 0.02em;
+  }
+  .hero-divider {
+    width: 54px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--green-600), var(--gold));
+    margin: 22px auto 40px;
   }
 
-  /* ── Image ── */
-  .plant-img-wrap {
-    text-align: center;
-    margin-bottom: 40px;
+  /* ── Image gallery (equal sizes) ── */
+  .gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
   }
-  .plant-img-wrap img {
-    max-width: 420px;
+  .gallery figure {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 14px 40px rgba(20,68,46,0.14);
+    border: 1px solid rgba(255,255,255,0.6);
+    background: #fff;
+  }
+  .gallery img {
+    display: block;
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(46,125,50,0.13);
-    display: inline-block;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .gallery figure:hover img { transform: scale(1.04); }
+
+  /* ── Section shell ── */
+  .section {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 36px 34px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 26px rgba(20,68,46,0.05);
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--green-700);
+    background: var(--green-100);
+    border-radius: 100px;
+    padding: 6px 14px;
+    margin-bottom: 24px;
   }
 
-  /* ── Two-column care info ── */
+  /* ── Planter box ── */
+  .planter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px;
+  }
+  .planter-col.bangla p {
+    font-family: 'Hind Siliguri', sans-serif;
+    font-size: 15px;
+    line-height: 1.95;
+    color: #3a443d;
+    margin: 0 0 15px;
+  }
+  .planter-col.english p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #3a443d;
+    margin: 0 0 15px;
+  }
+  .planter-col p:last-child { margin-bottom: 0; }
+
+  /* Poem / highlight quote */
+  .poem {
+    position: relative;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px !important;
+    line-height: 1.6 !important;
+    color: var(--green-900) !important;
+    background: linear-gradient(180deg, var(--gold-soft), rgba(244,236,210,0.25));
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 18px 16px 22px !important;
+    margin-bottom: 20px !important;
+  }
+  .poem .poem-by {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+  }
+  .planter-col.bangla .poem { font-family: 'Hind Siliguri', sans-serif; }
+  .planter-col.bangla .poem .poem-by { font-family: 'Hind Siliguri', sans-serif; }
+
+  /* ── Care info ── */
   .care-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 48px;
+    gap: 26px;
   }
-
   .care-col {
-    background: #fff;
-    border: 1px solid #e4ede4;
-    border-radius: 10px;
-    padding: 28px 26px;
+    background: linear-gradient(180deg, #fcfefc, #f6faf6);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 26px 24px;
   }
-
-  /* Column header flag */
   .care-col-header {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 18px;
     padding-bottom: 14px;
-    border-bottom: 1px solid #e4ede4;
+    border-bottom: 1px solid var(--line);
   }
-  .care-col-flag {
-    font-size: 20px;
-    line-height: 1;
-  }
+  .care-col-flag { font-size: 20px; line-height: 1; }
   .care-col-lang {
     font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
+    font-weight: 700;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #2e7d32;
+    color: var(--green-700);
   }
-
-  /* Bangla column */
+  .care-intro {
+    font-size: 14px !important;
+    color: var(--muted) !important;
+    margin-bottom: 18px !important;
+  }
   .care-col.bangla p {
     font-family: 'Hind Siliguri', sans-serif;
     font-size: 14.5px;
-    line-height: 1.9;
-    color: #333;
-    margin: 0 0 14px;
+    line-height: 1.85;
+    color: #3a443d;
+    margin: 0 0 12px;
   }
-
-  /* English column */
   .care-col.english p {
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 300;
-    line-height: 1.85;
-    color: #333;
-    margin: 0 0 14px;
+    line-height: 1.8;
+    color: #3a443d;
+    margin: 0 0 12px;
   }
-
   .care-col p:last-child { margin-bottom: 0; }
-
-  /* Inline labels like "আলো:", "Light:" */
-  .care-col p strong {
-    font-weight: 600;
-    color: #2e7d32;
+  .care-heading {
+    font-weight: 700 !important;
+    color: var(--green-700) !important;
+    font-size: 13px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 4px !important;
   }
+  .care-item { padding-left: 28px; position: relative; }
+  .care-item .ci {
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .care-item strong { font-weight: 600; color: var(--ink); }
 
-  /* Non-toxic badge */
-  .nontoxic-badge {
+  /* Gentle care-note badge */
+  .toxic-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: #e8f5e9;
-    color: #2e7d32;
+    background: var(--gold-soft);
+    color: #8a6d1c;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 100px;
+    margin-top: 14px;
+    border: 1px solid #e7d49a;
+    line-height: 1.5;
+  }
+  .care-col.bangla .toxic-badge { font-family: 'Hind Siliguri', sans-serif; }
+
+  /* ── Footer ── */
+  .site-footer {
+    border-top: 1px solid var(--line);
+    background: #fff;
+    margin-top: 12px;
+  }
+  .footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 28px;
+    text-align: center;
+  }
+  .footer-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+    margin: 0 auto 12px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--green-700);
+  }
+  .footer-tag {
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
     font-size: 12px;
     font-weight: 600;
-    padding: 5px 12px;
-    border-radius: 100px;
-    margin-top: 10px;
-    border: 1px solid #a5d6a7;
+    color: var(--gold);
+    margin-top: 6px;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: #9aa69e;
+    margin-top: 12px;
   }
 
   /* ── Responsive ── */
-  @media (max-width: 680px) {
-    .page { padding: 32px 16px 40px; }
-    .care-grid { grid-template-columns: 1fr; gap: 20px; }
-    .plant-img-wrap img { max-width: 100%; }
+  @media (max-width: 720px) {
+    .page { padding: 40px 18px 32px; }
+    .section { padding: 26px 20px; }
+    .gallery { gap: 14px; }
+    .planter-grid { grid-template-columns: 1fr; gap: 26px; }
+    .care-grid { grid-template-columns: 1fr; gap: 18px; }
+    .brand .name-bn { display: none; }
+  }
+  @media (max-width: 420px) {
+    .gallery { grid-template-columns: 1fr; }
   }
 
 </style>
@@ -166,79 +369,120 @@
 <body>
 
 <!-- Top nav -->
-<div class="nav-bar">
-  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
+<div class="nav-bar top">
+  <a class="brand" href="https://asadparish.github.io/aronnok/">
+    <img class="brand-logo" src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/logo.png" alt="Aronnok logo">
+    <span class="name">Aronnok</span>
+    <span class="name-bn">আরণ্যক</span>
+  </a>
+  <a class="nav-link" href="https://asadparish.github.io/aronnok/">← Homepage</a>
 </div>
 
 <div class="page">
 
-  <!-- Plant name -->
+  <!-- Hero -->
+  <div class="kicker">Plant Care Guide · পরিচর্যা নির্দেশিকা</div>
   <h1 class="plant-name">
     Philodendron Lemon Lime
     <span>ফিলোডেনড্রন লেমন লাইম</span>
   </h1>
+  <div class="hero-divider"></div>
 
-  <!-- Image -->
-  <div class="plant-img-wrap">
-    <img
-      src="assets/Philo_Lemon_Lime00001_01.webp"
-      alt="Philodendron Lemon Lime"
-    >
+  <!-- Image gallery -->
+  <div class="gallery">
+    <figure>
+      <img src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/Philo_Lemon_Lime00001_01.webp" alt="Philodendron Lemon Lime – planter view 1">
+    </figure>
+    <figure>
+      <img src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/Philo_Lemon_Lime00001_02.webp" alt="Philodendron Lemon Lime – planter view 2">
+    </figure>
   </div>
 
-  <!-- Two-column care info -->
-  <div class="care-grid">
+  <!-- Planter Box Section -->
+  <div class="section">
+    <span class="section-label">🪴 প্ল্যান্টার বক্স সম্পর্কে · About the Planter Box</span>
+    <div class="planter-grid">
 
-    <!-- BANGLA -->
-    <div class="care-col bangla">
-      <div class="care-col-header">
-        <span class="care-col-flag">🇧🇩</span>
-        <span class="care-col-lang">বাংলা</span>
+      <div class="planter-col bangla">
+        <p>চেরি ফুল মাত্র কয়েকদিনের জন্য ফোটে। তারপর ঝরে যায়। কিন্তু প্রতিটি বসন্তে সে ফিরে আসে। গাছ কি কখনো ঝরে যাওয়া ফুলের শোকে বিষণ্নতায় লীন হয়? আমরা জানি না। কিন্তু আমরা এটা নিশ্চিত, সে পরের বসন্তের প্রস্তুতি নেয়।</p>
+        <p>আজ হয়তো আমাদের কিছু একটা ভেঙে পড়ছে- একটা সম্পর্ক, একটা স্বপ্ন, একটা সুযোগ, কিংবা এমন কিছু যা আমরা ধরে রাখতে চাচ্ছিলাম সবচেয়ে বেশি। সেই হারানোর ব্যথা নিদারুণ সত্যি। শূন্যতাও সত্যি। কিন্তু প্রকৃতি বারবার একটি কথাই আমাদের মনে করিয়ে দেয়- ঝরে পড়া প্রতিটি ফুলের পরে, গাছের গল্প শেষ হয় না। নিঃসঙ্গ প্রতিটি ডালের ভেতরেই নীরবে জন্ম নিতে থাকে আরেকটি বসন্ত।</p>
+        <p class="poem">এই প্ল্যান্টার বক্সটি প্রতিবার আপনাকে মনে করিয়ে দেবে, মানুষের গল্প কোথাও শেষ হয় না। প্রতিটা শেষই নতুন একটা গল্পের প্রথম লাইন!</p>
+        <p>এই বক্সটা তৈরি করা হয়েছে ৫ মিলিমিটারের পিভিসি শীট ব্যবহার করে; এটা বেশ টেকসই। প্ল্যান্টারটা আঁকা হয়েছে এক্রেলিক ব্যবহার করে; তার উপর সীলার (ভার্নিশ) ব্যবহার করে আরেকটু টেকসই করা হয়েছে সেটটাকে। এটা পানিরোধী। পানিতে লম্বা সময় না থাকলে বক্সটার কোনো ক্ষতি হবে না।</p>
       </div>
 
-      <p>ফিলোডেনড্রন লেমন লাইম উজ্জ্বল লেমন-হলুদ রঙের হৃদপিণ্ডাকৃতির পাতার জন্য পরিচিত একটি জনপ্রিয় ইনডোর প্ল্যান্ট। এটি উজ্জ্বল, পরোক্ষ আলো এবং মাঝারি আর্দ্রতা পছন্দ করে। মাটি শুকালে পানি দিন এবং নিয়মিত ছাঁটাই করলে এটি ঝাকড়া ও সুন্দর থাকে।</p>
-
-      <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
-      <p><strong>আলো:</strong> উজ্জ্বল, পরোক্ষ আলো দিন। সরাসরি সূর্যালোক পাতা ঝলসে দিতে পারে এবং বিবর্ণ করে তুলতে পারে।</p>
-      <p><strong>পানি দেওয়া:</strong> মাটি সবসময় আর্দ্র রাখুন, কিন্তু কাদাকাদা করবেন না। মাটির উপরের এক ইঞ্চি শুকিয়ে গেলে জল দিন, সাধারণত প্রতি ৪–৬ দিন অন্তর।</p>
-      <p><strong>আর্দ্রতা:</strong> উচ্চ আর্দ্রতা অত্যন্ত গুরুত্বপূর্ণ; প্রয়োজন হলে জলীয় বাষ্প ছিটিয়ে দিন।</p>
-      <p><strong>তাপমাত্রা:</strong> উষ্ণ তাপমাত্রা বজায় রাখুন এবং ঠান্ডা বাতাসের ঝাপটা থেকে দূরে রাখুন।</p>
-      <p><strong>মাটি:</strong> বায়ু চলাচলযোগ্য পটিং মিক্স ব্যবহার করুন, যেমন পিট মস বা কোকো পিটযুক্ত মিশ্রণ।</p>
-      <p><strong>সার:</strong> বৃদ্ধির মরসুমে (বসন্ত ও গ্রীষ্মকালে) মাসে একবার সুষম ও পাতলা তরল সার প্রয়োগ করা যেতে পারে।</p>
-      <p><strong>ছাঁটাই:</strong> ঘন ঝাকড়া করার জন্য নিয়মিত লতানো অংশ ছাঁটাই করুন।</p>
-
-      <div class="nontoxic-badge">🐾 পোষা প্রাণীদের জন্য বিষাক্ত নয়</div>
-    </div>
-
-    <!-- ENGLISH -->
-    <div class="care-col english">
-      <div class="care-col-header">
-        <span class="care-col-flag">🌿</span>
-        <span class="care-col-lang">English</span>
+      <div class="planter-col english">
+        <p>Cherry blossoms bloom for only a few days. Then they fall. But they come back every spring. Does the tree ever become depressed over the loss of its fallen flowers? We don't know. But we are sure that it prepares for the next spring.</p>
+        <p>Today, something may be falling apart for us - a relationship, a dream, an opportunity, or something we wanted to hold on to the most. The pain of loss is very real. The emptiness is also real. But nature reminds us again and again - after every flower that falls, the story of the tree does not end. Another spring begins to be born silently inside each lonely branch.</p>
+        <p class="poem">Likewise, the story of a person does not end anywhere. Every ending is the first line of a new story!</p>
+        <p>This box is made using 5 millimeter PVC sheet; it is quite durable. The planter is painted using acrylic; the set has been made more durable by using a sealer (varnish). It is waterproof. Unless it is exposed to water for a long time, there will be no damage to the box.</p>
       </div>
 
-      <p>Philodendron Lemon Lime is a popular indoor plant known for its bright lemon-yellow heart-shaped leaves. It likes bright, indirect light and moderate humidity. Water when the soil is dry and prune regularly to keep it bushy and beautiful.</p>
-
-      <p><strong>Detailed Care Instructions:</strong></p>
-      <p><strong>Light:</strong> Provide bright, indirect light. Direct sunlight can scorch the leaves and cause them to discolor.</p>
-      <p><strong>Watering:</strong> Keep the soil moist at all times, but not soggy. Water when the top inch of soil is dry, usually every 4–6 days.</p>
-      <p><strong>Humidity:</strong> High humidity is very important; mist as needed.</p>
-      <p><strong>Temperature:</strong> Maintain warm temperatures and keep away from cold drafts.</p>
-      <p><strong>Soil:</strong> Use an airy potting mix, such as a mix containing peat moss or coco peat.</p>
-      <p><strong>Fertilizer:</strong> A balanced, diluted liquid fertilizer can be applied once a month during the growing season (spring and summer).</p>
-      <p><strong>Pruning:</strong> Prune creeping parts regularly to create a dense clump.</p>
-
-      <div class="nontoxic-badge">🐾 Not toxic to pets</div>
     </div>
+  </div>
 
-  </div><!-- /care-grid -->
+  <!-- Care info -->
+  <div class="section">
+    <span class="section-label">🌱 পরিচর্যা · Care Instructions</span>
+    <div class="care-grid">
+
+      <!-- BANGLA -->
+      <div class="care-col bangla">
+        <div class="care-col-header">
+          <span class="care-col-flag">🇧🇩</span>
+          <span class="care-col-lang">বাংলা</span>
+        </div>
+
+        <p class="care-intro">ফিলোডেনড্রন লেমন লাইম উজ্জ্বল লেমন-হলুদ রঙের হৃদপিণ্ডাকৃতির পাতার জন্য পরিচিত একটি জনপ্রিয় ইনডোর প্ল্যান্ট। উজ্জ্বল রঙ ও ঝাকড়া বৃদ্ধিই এর পরিচয়।</p>
+
+        <p class="care-heading">পরিচর্যার বিস্তারিত নির্দেশাবলী</p>
+        <p class="care-item"><span class="ci">☀️</span><strong>আলো:</strong> উজ্জ্বল, পরোক্ষ আলো দিন। সরাসরি রোদ পাতা ঝলসে দিতে পারে এবং রঙ বিবর্ণ করে তোলে।</p>
+        <p class="care-item"><span class="ci">🌡️</span><strong>তাপমাত্রা:</strong> উষ্ণ তাপমাত্রা (১৮°C – ২৭°C) আদর্শ। ঠান্ডা বাতাসের ঝাপটা থেকে দূরে রাখুন।</p>
+        <p class="care-item"><span class="ci">💦</span><strong>আর্দ্রতা:</strong> মাঝারি থেকে উচ্চ আর্দ্রতা পছন্দ করে; শুষ্ক আবহাওয়ায় প্রয়োজনে পাতায় জলীয় বাষ্প ছিটিয়ে দিন।</p>
+        <p class="care-item"><span class="ci">🪴</span><strong>মাটি:</strong> বায়ু চলাচলযোগ্য পটিং মিক্স ব্যবহার করুন, যেমন পিট মস বা কোকো পিটযুক্ত মিশ্রণ। মাটি পরিবর্তন করতে হলে এই ধরনের মিশ্রণই ভালো।</p>
+        <p class="care-item"><span class="ci">🌿</span><strong>সার:</strong> বৃদ্ধির মরসুমে (বসন্ত ও গ্রীষ্মকালে) মাসে একবার সুষম ও পাতলা তরল সার প্রয়োগ করুন। শীতে সার দেবেন না।</p>
+        <p class="care-item"><span class="ci">💧</span><strong>পানি দেওয়া:</strong> খুব সাবধানে পানি দিন, কেননা এই প্ল্যান্টারে কোনো ড্রেইনেজ ব্যবস্থা নেই। মাটি আর্দ্র রাখুন কিন্তু কাদাকাদা নয়। উপরের এক ইঞ্চি শুকিয়ে গেলে জল দিন, সাধারণত প্রতি ৪–৬ দিন অন্তর।</p>
+        <p class="care-item"><span class="ci">✂️</span><strong>ছাঁটাই:</strong> ঘন ও ঝাকড়া করার জন্য নিয়মিত লতানো অংশ ছাঁটাই করুন।</p>
+        <p class="care-item"><span class="ci">🐛</span><strong>সমস্যা ও সমাধান:</strong> মিলিবাগ, স্পাইডার মাইট- নিম তেল স্প্রে করুন।</p>
+
+        <div class="toxic-badge">🌿 এই গাছের পাতা খাওয়ার জন্য নয়। তাই, শিশু ও পোষা প্রাণীর নাগালের বাইরে রাখুন</div>
+      </div>
+
+      <!-- ENGLISH -->
+      <div class="care-col english">
+        <div class="care-col-header">
+          <span class="care-col-flag">🌿</span>
+          <span class="care-col-lang">English</span>
+        </div>
+
+        <p class="care-intro">Philodendron Lemon Lime (<em>Philodendron hederaceum</em> 'Lemon Lime') is loved for its bright, lemon-yellow heart-shaped leaves and easy, bushy growth.</p>
+
+        <p class="care-heading">Detailed Care Instructions</p>
+        <p class="care-item"><span class="ci">☀️</span><strong>Light:</strong> Bright, indirect light. Direct sun can scorch the leaves and fade their color.</p>
+        <p class="care-item"><span class="ci">🌡️</span><strong>Temperature:</strong> Warm temperatures (18°C – 27°C) are ideal. Keep away from cold drafts.</p>
+        <p class="care-item"><span class="ci">💦</span><strong>Humidity:</strong> Prefers moderate to high humidity; mist the leaves as needed in dry conditions.</p>
+        <p class="care-item"><span class="ci">🪴</span><strong>Soil:</strong> Use an airy potting mix, such as a blend containing peat moss or coco peat.</p>
+        <p class="care-item"><span class="ci">🌿</span><strong>Fertilizer:</strong> A balanced, diluted liquid fertilizer once a month during the growing season (spring and summer). Stop in winter.</p>
+        <p class="care-item"><span class="ci">💧</span><strong>Watering:</strong> Water carefully, as this planter has no drainage. Keep the soil moist but not soggy — water when the top inch is dry, usually every 4–6 days.</p>
+        <p class="care-item"><span class="ci">✂️</span><strong>Pruning:</strong> Prune the creeping parts regularly to keep it dense and bushy.</p>
+        <p class="care-item"><span class="ci">🐛</span><strong>Problems &amp; Solutions:</strong> Mealybugs, spider mites — treat with a neem oil spray.</p>
+
+        <div class="toxic-badge">🌿 These leaves are not for eating — please keep out of reach of children and pets</div>
+      </div>
+
+    </div>
+  </div>
 
 </div><!-- /page -->
 
-<!-- Bottom nav -->
-<div class="nav-bar bottom">
-  <a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a>
-</div>
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <img class="footer-logo" src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/logo.png" alt="Aronnok logo">
+    <div class="footer-brand">Aronnok · আরণ্যক</div>
+    <div class="footer-tag">Unique · Handmade · Low Maintenance</div>
+    <div class="footer-note">© 2026 Aronnok. Hand-painted with care.</div>
+  </div>
+</footer>
 
 </body>
 </html>

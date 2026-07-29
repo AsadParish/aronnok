@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peace Lily – Aronnok</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'DM Sans', sans-serif; background: #f9fdf9; color: #1a1a1a; margin: 0; }
+  .nav-bar { text-align: center; padding: 10px 16px; background: #f5f5f0; border-bottom: 1px solid #ddd; }
+  .nav-bar.bottom { border-bottom: none; border-top: 1px solid #ddd; }
+  .nav-bar a { color: #2e7d32; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .nav-bar a:hover { opacity: 0.75; }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 32px 56px; }
+  .plant-name { text-align: center; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: #2e7d32; margin-bottom: 28px; letter-spacing: -0.01em; }
+  .plant-name span { font-weight: 500; color: #5a7a5a; font-size: 0.6em; display: block; margin-top: 6px; letter-spacing: 0.02em; font-family: 'Hind Siliguri', sans-serif; }
+  .plant-img-wrap { text-align: center; margin-bottom: 40px; }
+  .plant-img-wrap img { max-width: 420px; width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(46,125,50,0.13); display: inline-block; }
+  .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; }
+  .care-col { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 28px 26px; }
+  .care-col-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; }
+  .care-col-flag { font-size: 20px; line-height: 1; }
+  .care-col-lang { font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #2e7d32; }
+  .care-col.bangla p { font-family: 'Hind Siliguri', sans-serif; font-size: 14.5px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+  .care-col.english p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.85; color: #333; margin: 0 0 14px; }
+  .care-col p:last-child { margin-bottom: 0; }
+  .care-col p strong { font-weight: 600; color: #2e7d32; }
+  .care-note-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 100px; margin-top: 12px; line-height: 1.5; }
+  .care-note-badge.warn { background: #fff4e5; color: #8a5a00; border: 1px solid #ffd699; }
+  .care-note-badge.safe { background: #e8f6e9; color: #1f7a32; border: 1px solid #a8dcae; }
+  .care-col.bangla .care-note-badge { font-family: 'Hind Siliguri', sans-serif; }
+  .planter-section { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 32px 28px; margin-bottom: 24px; }
+  .planter-section-header { font-size: 16px; font-weight: 700; color: #2e7d32; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; }
+  .planter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .planter-col.bangla p { font-family: 'Hind Siliguri', sans-serif; font-size: 14.5px; line-height: 1.9; color: #333; margin: 0 0 14px; }
+  .planter-col.english p { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.85; color: #333; margin: 0 0 14px; }
+  .planter-col p:last-child { margin-bottom: 0; }
+  .box-highlight { background:#eef6ee; border-left:3px solid #2e7d32; border-radius:0 8px 8px 0; padding:14px 16px !important; margin:8px 0 14px !important; font-weight:500; color:#1c5320 !important; }
+  .planter-col.english .box-highlight { font-style:italic; }
+  @media (max-width: 680px) {
+    .page { padding: 32px 16px 40px; }
+    .care-grid { grid-template-columns: 1fr; gap: 20px; }
+    .planter-grid { grid-template-columns: 1fr; gap: 20px; }
+    .plant-img-wrap img { max-width: 100%; }
+  }
+</style></head><body>
+<div class="nav-bar"><a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a></div>
+<div class="page">
+  <h1 class="plant-name">Peace Lily<span>পিস লিলি</span></h1>
+  <div class="plant-img-wrap"><img src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/IMG_20260729_122627.webp" alt="Peace Lily"></div>
+  <div class="planter-section">
+    <div class="planter-section-header">🪴 প্ল্যান্টার বক্স সম্পর্কে / About the Planter Box</div>
+    <div class="planter-grid">
+      <div class="planter-col bangla">
+        <p>গাঢ় সবুজ বক্সে রাতের শহরের কালো অবয়ব, এক ফালি চাঁদ, দূরে আলোর মালা—নিঝুম, নিঃসঙ্গ।</p>
+        <p>কবি Robert Frost তাঁর ‘Acquainted with the Night’ কবিতায় লিখেছিলেন এমন এক মানুষের কথা, যে রাতের শহরে একা হাঁটে, সবচেয়ে নিঃসঙ্গ সময়টা চেনে; অথচ সেই একাকী হাঁটাতেই সে নিজের সঙ্গে সবচেয়ে বেশি কথা বলে।</p>
+        <p class="box-highlight">এই প্ল্যান্টার বক্সটা প্রতিদিন আপনাকে মনে করিয়ে দিবে, “রাত মানেই শুধু নিঃসঙ্গতা নয়; কখনো কখনো একা রাতের নিস্তব্ধতাই নিজেকে সবচেয়ে ভালো করে চেনার সময়।”</p>
+        <p>এই বক্সটা তৈরি করা হয়েছে ৫ মিলিমিটারের পিভিসি শীট ব্যবহার করে; এটা বেশ টেকসই। প্ল্যান্টারটা আঁকা হয়েছে এক্রেলিক ব্যবহার করে; তার উপর সীলার (ভার্নিশ) ব্যবহার করে আরেকটু টেকসই করা হয়েছে সেটটাকে। এটা পানিরোধী। পানিতে লম্বা সময় না থাকলে বক্সটার কোনো ক্ষতি হবে না।</p>
+      </div>
+      <div class="planter-col english">
+        <p>On a deep green box, the black silhouette of a night city, a sliver of moon, a string of lights in the distance — still, and lonely.</p>
+        <p>The poet Robert Frost wrote in 'Acquainted with the Night' of a man who walks the night city alone, who knows its loneliest hour; yet it is in that solitary walk that he speaks most deeply with himself.</p>
+        <p class="box-highlight">This planter box will remind you every day: “Night doesn't mean only loneliness; sometimes the stillness of a solitary night is when you come to know yourself best.”</p>
+        <p>This box is made from a 5 mm PVC sheet, which makes it quite durable. The planter is hand-painted with acrylics, and a sealer (varnish) has been applied over the artwork to make the set even more long-lasting. It is water-resistant; as long as it is not left in water for a long time, the box will not be damaged.</p>
+      </div>
+    </div>
+    <div class="care-grid">
+    <div class="care-col bangla"><div class="care-col-header"><span class="care-col-flag">🇧🇩</span><span class="care-col-lang">বাংলা</span></div>
+      <p>পিস লিলি গাঢ় সবুজ পাতা আর মার্জিত সাদা ফুলের জন্য পরিচিত জনপ্রিয় ইনডোর প্ল্যান্ট; কম আলোতেও ভালো থাকে এবং বাতাস পরিশোধনে সাহায্য করে।</p>
+      <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
+      <p><strong>আলো:</strong> কম থেকে মাঝারি পরোক্ষ আলোতে ভালো জন্মে। সরাসরি সূর্যালোক পাতা পুড়িয়ে দিতে পারে।</p>
+      <p><strong>পানি:</strong> মাটির উপরের এক–দুই ইঞ্চি শুকিয়ে গেলে পানি দিন। পাতা ঝুলে পড়া পানির সংকেত; অতিরিক্ত পানি শিকড় পচনের কারণ।</p>
+      <p><strong>আর্দ্রতা:</strong> মাঝারি থেকে উচ্চ আর্দ্রতা পছন্দ করে। মাঝে মাঝে পাতায় জলীয় বাষ্প ছিটিয়ে দিন।</p>
+      <p><strong>তাপমাত্রা:</strong> ১৮–৩০° সেলসিয়াস আদর্শ। ঠান্ডা বাতাস ও শীতাতপ যন্ত্রের সরাসরি বাতাস এড়িয়ে চলুন।</p>
+      <p><strong>মাটি:</strong> ভালো নিষ্কাশনযোগ্য পটিং মিক্স; পিট মস বা পার্লাইটযুক্ত মিশ্রণ উপযুক্ত।</p>
+      <p><strong>সার:</strong> বসন্ত ও গ্রীষ্মে প্রতি ছয় সপ্তাহে একবার সুষম তরল সার দিন। শীতে সার দেবেন না।</p>
+      <p><strong>ছাঁটাই:</strong> মরা বা হলুদ পাতা ও ঝরে যাওয়া ফুল নিয়মিত ছেঁটে ফেলুন।</p>
+      <div class="care-note-badge warn">🐾 এই গাছ খাওয়ার উপযোগী নয়; শিশু ও পোষা প্রাণীর নাগালের বাইরে রাখুন।</div></div>
+    <div class="care-col english"><div class="care-col-header"><span class="care-col-flag">🌿</span><span class="care-col-lang">English</span></div>
+      <p>The Peace Lily is a popular indoor plant known for its deep green leaves and elegant white flowers; it thrives in low light and helps purify the air.</p>
+      <p><strong>Detailed Care Instructions:</strong></p>
+      <p><strong>Light:</strong> Grows well in low to medium indirect light. Direct sunlight can scorch the leaves.</p>
+      <p><strong>Watering:</strong> Water when the top 1–2 inches of soil are dry. Drooping leaves are its thirst signal; overwatering causes root rot.</p>
+      <p><strong>Humidity:</strong> Prefers moderate to high humidity. Mist the leaves occasionally.</p>
+      <p><strong>Temperature:</strong> Thrives at 18–30°C. Keep away from cold drafts and direct air-conditioning airflow.</p>
+      <p><strong>Soil:</strong> A well-draining potting mix; a blend with peat moss or perlite works well.</p>
+      <p><strong>Fertilizer:</strong> Feed a balanced liquid fertilizer once every six weeks in spring and summer. Avoid fertilizing in winter.</p>
+      <p><strong>Pruning:</strong> Regularly trim dead or yellowing leaves and spent flowers.</p>
+      <div class="care-note-badge warn">🐾 Not safe to ingest — keep out of reach of children and pets.</div></div>
+    </div>
+  </div>
+</div>
+<div class="nav-bar bottom"><a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a></div>
+</body></html>

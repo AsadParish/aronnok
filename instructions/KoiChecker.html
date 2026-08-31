@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Koi – Aronnok</title>
+<title>Parlor Palm in Koinobori – Aronnok</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   body { font-family: 'DM Sans', sans-serif; background: #f9fdf9; color: #1a1a1a; margin: 0; }
@@ -13,6 +13,8 @@
   .plant-name span { font-weight: 500; color: #5a7a5a; font-size: 0.6em; display: block; margin-top: 6px; letter-spacing: 0.02em; font-family: 'Hind Siliguri', sans-serif; }
   .plant-img-wrap { text-align: center; margin-bottom: 40px; }
   .plant-img-wrap img { max-width: 420px; width: 100%; border-radius: 12px; box-shadow: 0 8px 32px rgba(46,125,50,0.13); display: inline-block; }
+  .plant-img-wrap.two-up { display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; }
+  .plant-img-wrap.two-up img { max-width: 330px; width: 46%; min-width: 220px; aspect-ratio: 4 / 5; object-fit: cover; }
   .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; }
   .care-col { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 28px 26px; }
   .care-col-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; }
@@ -24,6 +26,7 @@
   .care-col p strong { font-weight: 600; color: #2e7d32; }
   .care-note-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 13px; border-radius: 100px; margin-top: 12px; line-height: 1.5; }
   .care-note-badge.safe { background: #e8f6e9; color: #1f7a32; border: 1px solid #a8dcae; }
+  .care-note-badge.warn { background: #fdf3e3; color: #a05a13; border: 1px solid #eccf9c; }
   .care-col.bangla .care-note-badge { font-family: 'Hind Siliguri', sans-serif; }
   .planter-section { background: #fff; border: 1px solid #e4ede4; border-radius: 10px; padding: 32px 28px; margin-bottom: 24px; }
   .planter-section-header { font-size: 16px; font-weight: 700; color: #2e7d32; margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid #e4ede4; }
@@ -38,26 +41,59 @@
     .care-grid { grid-template-columns: 1fr; gap: 20px; }
     .planter-grid { grid-template-columns: 1fr; gap: 20px; }
     .plant-img-wrap img { max-width: 100%; }
+    .plant-img-wrap.two-up img { width: 100%; max-width: 100%; }
   }
 </style></head><body>
 <div class="nav-bar"><a href="https://asadparish.github.io/aronnok/">← Go to Homepage</a></div>
 <div class="page">
-  <h1 class="plant-name">The Koi<span>কই মাছ</span></h1>
-  <div class="plant-img-wrap"><img src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/20260731_160751.webp" alt="The Koi"></div>
+  <h1 class="plant-name">Parlor Palm in Koinobori<span>পার্লার পাম · কোই মাছের নীল ছক</span></h1>
+  <div class="plant-img-wrap"><img src="https://raw.githubusercontent.com/AsadParish/aronnok/main/assets/Parlour_Palm_in_Illusion.webp" alt="Parlor Palm in Koinobori"></div>
   <div class="planter-section">
     <div class="planter-section-header">🪴 প্ল্যান্টার বক্স সম্পর্কে / About the Planter Box</div>
     <div class="planter-grid">
       <div class="planter-col bangla">
-        <p>নীল ছকের ওপর সাঁতরে চলেছে এক উজ্জ্বল কই মাছ—স্রোত যেদিকেই যাক, সে নিজের পথে।</p>
-        <p>জাপানে শিশুদিবসে বাড়ির ছাদে ওড়ানো হয় রঙিন কই-পতাকা (‘কোইনোবোরি’); কারণ কই মাছ স্রোতের বিরুদ্ধে সাঁতরায়, জলপ্রপাত বেয়ে ওঠে—তাই সে সাহস আর অধ্যবসায়ের প্রতীক। বাবা-মায়েরা চান, সন্তানও যেন তেমন শক্ত হয়।</p>
-        <p class="box-highlight">এই প্ল্যান্টার বক্সটা প্রতিদিন আপনাকে মনে করিয়ে দিবে, “স্রোত সবসময় অনুকূল থাকবে না; কিন্তু কই মাছের মতো যে উজানে সাঁতরাতে শেখে, সে-ই সবচেয়ে দূর যায়।”</p>
+        <p>নীল-সাদা ছকে আঁকা এই ছোট্ট বক্সটার দিকে তাকালে কিছু রেখা যেন আঁকাবাঁকা মনে হয়- অথচ প্রতিটি রেখা আসলে একেবারে সোজা। এ এক নিখাদ দৃষ্টিভ্রম। আর সেই ছকের বুক চিরে নির্বিকার সাঁতরে চলেছে দুটি উজ্জ্বল কোই মাছ।</p>
+        <p>আমাদের জীবনটাও কি এমন নয়- একটা ইলিউশন? কাল যা ঠিক মনে হয়েছিল, আজ কেন সেটাই ভুল মনে হচ্ছে? মনে হয় পথটা বেঁকে গেছে, ক্যারিয়ারটা ভুল দিকে যাচ্ছে, পরিশ্রমের ফল আসছে না, অন্যরা অনেক দূর এগিয়ে গেছে। কিন্তু হয়তো এগুলোর কোনোটাই সত্যি নয়- হয়তো আমরা শুধু একটা নির্দিষ্ট কোণ থেকে দেখছি!</p>
+        <p>এই কোই মাছই জাপানি সংস্কৃতিতে সাহস আর অধ্যবসায়ের প্রতীক। শিশুদিবসে জাপানে বাড়ির ছাদে ওড়ানো হয় রঙিন কোই-পতাকা- ‘কোইনোবোরি’। বিশ্বাস করা হয়, কোই স্রোতের বিপরীতে সাঁতরায়, এমনকি জলপ্রপাত বেয়েও ওপরে ওঠে। তাই বাবা-মায়েরা চান, তাঁদের সন্তানও যেন কোইয়ের মতো শক্ত, সাহসী আর অধ্যবসায়ী হয়ে ওঠে। স্রোত থামানোর ক্ষমতা কোইদের নেই; কিন্তু স্রোতের মধ্যেও নিজের পথ বেছে নেওয়ার ক্ষমতা তাদের আছে।</p>
+        <p>সব রেখা কখনোই সোজা দেখাবে না, সব পথ কখনোই সহজ হবে না, আর সব পরিশ্রমের ফলও সঙ্গে সঙ্গে আসবে না। তবু কোইয়ের মতো এগিয়ে যাওয়াটাই যুক্তিযুক্ত- স্রোত যেদিকেই যাক, নিজের পথে সাঁতরে যেতে হয়।</p>
+        <p class="box-highlight">এই প্ল্যান্টার বক্সটা প্রতিদিন আপনাকে মনে করিয়ে দিক, "জীবনের সব বাঁক সত্যিকারের বাঁক নয়; আজ যে পথটাকে আঁকাবাঁকা বা ভুল মনে হচ্ছে, কাল হয়তো সেখানেই খুঁজে পাবেন নিজের সবচেয়ে সুন্দর গল্পটা!"</p>
         <p>এই বক্সটা তৈরি করা হয়েছে ৫ মিলিমিটারের পিভিসি শীট ব্যবহার করে; এটা বেশ টেকসই। প্ল্যান্টারটা আঁকা হয়েছে এক্রেলিক ব্যবহার করে; তার উপর সীলার (ভার্নিশ) ব্যবহার করে আরেকটু টেকসই করা হয়েছে সেটটাকে। এটা পানিরোধী। পানিতে লম্বা সময় না থাকলে বক্সটার কোনো ক্ষতি হবে না।</p>
       </div>
       <div class="planter-col english">
-        <p>Across a blue checkerboard swims a bright koi — wherever the current goes, it keeps to its own way.</p>
-        <p>In Japan, on Children's Day, colorful koi streamers ('koinobori') are flown from rooftops; because the koi swims against the current and climbs waterfalls, it is a symbol of courage and perseverance. Parents wish their children to be just as strong.</p>
-        <p class="box-highlight">This planter box will remind you every day: “The current won't always be in your favor; but the one who, like the koi, learns to swim upstream is the one who travels farthest.”</p>
+        <p>Look at this little box, painted in a blue-and-white checkerboard, and some of the lines seem to bend and waver—yet every single line is perfectly straight. It is pure optical illusion. And swimming calmly across that grid are two bright koi.</p>
+        <p>Isn't our life a little like that too—an illusion? Why does something that felt right yesterday feel wrong today? It seems the road has bent, the career is heading the wrong way, the hard work isn't paying off, everyone else has raced far ahead. But perhaps none of it is true—perhaps we are only seeing it from one fixed angle.</p>
+        <p>This same koi is a symbol of courage and perseverance in Japanese culture. On Children's Day, families in Japan fly colourful koi-shaped banners—'koinobori'—from their rooftops. The koi is believed to swim against the current, and even to climb waterfalls. So parents wish for their children to grow up strong, brave and persevering, just like it. The koi cannot stop the current; but within the current, it still has the power to choose its own path.</p>
+        <p>Not every line will look straight, not every road will be easy, and not every effort will bear fruit right away. Yet, like the koi, moving forward is what makes sense—whichever way the current runs, you swim your own way.</p>
+        <p class="box-highlight">This planter box will remind you every day: "Not every bend in life is a real bend; the path that looks crooked or wrong today may be exactly where you find your most beautiful story tomorrow."</p>
         <p>This box is made from a 5 mm PVC sheet, which makes it quite durable. The planter is hand-painted with acrylics, and a sealer (varnish) has been applied over the artwork to make the set even more long-lasting. It is water-resistant; as long as it is not left in water for a long time, the box will not be damaged.</p>
+      </div>
+    </div>
+    <div class="care-grid">
+      <div class="care-col bangla">
+        <div class="care-col-header"><span class="care-col-flag">🇧🇩</span><span class="care-col-lang">বাংলা</span></div>
+        <p>পার্লার পাম (Chamaedorea elegans) ঘরের ভেতরের অন্যতম সহজ-যত্নের পাম; কম আলোতেও দিব্যি বেঁচে থাকে আর ধীরে ধীরে সবুজ পালকের মতো পাতা মেলে ধরে।</p>
+        <p><strong>পরিচর্যার বিস্তারিত নির্দেশাবলী:</strong></p>
+        <p><strong>আলো:</strong> উজ্জ্বল কিন্তু পরোক্ষ আলো সবচেয়ে ভালো; কম-মাঝারি আলোতেও চলে। কড়া সরাসরি রোদে পাতা পুড়ে যেতে পারে, তাই এড়িয়ে চলুন।</p>
+        <p><strong>পানি:</strong> মাঝে মাঝে পানি দিন। এই বক্সের মিডিয়া এবং ড্রেনেজ- দুটোই দারুন। তাই মেপে পানি দিন- গোড়ায় পানি জমতে দেবেন না; অতিরিক্ত পানিতে শিকড় পচে যেতে পারে।</p>
+        <p><strong>তাপমাত্রা:</strong> ১৮-২৭° সেলসিয়াস আদর্শ। ১০°- এর নিচে রাখবেন না।</p>
+        <p><strong>আর্দ্রতা:</strong> মাঝারি থেকে বেশি আর্দ্রতা পছন্দ করে; মাঝেমধ্যে পাতায় হালকা পানি স্প্রে করলে ভালো থাকে।</p>
+        <p><strong>মাটি:</strong> ঝুরঝুরে, ভালো নিষ্কাশনক্ষম পিট-মিশ্রিত পটিং মিক্স।</p>
+        <p><strong>সার:</strong> বাড়ন্ত মৌসুমে মাসে একবার পাতলা তরল সার; শীতে সার দেওয়ার দরকার নেই।</p>
+        <p><strong>যত্ন:</strong> মাঝেমধ্যে নরম কাপড়ে পাতা মুছে দিন যাতে ধুলো না জমে। শুকনো বাদামি পাতা ছেঁটে ফেলুন। নতুন চারা সাধারণত গাছ ভাগ করে (division) করা হয়।</p>
+        <div class="care-note-badge safe">🐾 পোষা প্রাণী ও শিশুদের জন্য নিরাপদ। নন-টক্সিক।</div>
+      </div>
+      <div class="care-col english">
+        <div class="care-col-header"><span class="care-col-flag">🌿</span><span class="care-col-lang">English</span></div>
+        <p>The Parlor Palm (Chamaedorea elegans) is one of the easiest indoor palms to care for—it thrives even in low light and slowly unfurls its soft, feathery green fronds.</p>
+        <p><strong>Detailed Care Instructions:</strong></p>
+        <p><strong>Light:</strong> Bright, indirect light is best; it also tolerates low-to-medium light. Avoid harsh direct sun, which can scorch the leaves.</p>
+        <p><strong>Watering:</strong> Water when the top 2-3 cm of soil feels dry. This planter has no drainage hole, so water measuredly and never let water pool at the base—soggy roots lead to rot.</p>
+        <p><strong>Temperature:</strong> A comfortable 18-27°C. Keep it above 10°C.</p>
+        <p><strong>Humidity:</strong> Prefers moderate to high humidity; an occasional light misting keeps it happy.</p>
+        <p><strong>Soil:</strong> A light, well-draining peat-based potting mix.</p>
+        <p><strong>Fertilizer:</strong> A diluted liquid feed once a month during the growing season; none needed in winter.</p>
+        <p><strong>Care:</strong> Wipe the leaves now and then to keep dust off, and trim any dry brown fronds. New plants are usually started by division.</p>
+        <div class="care-note-badge safe">🐾 Safe for pets and children — non-toxic.</div>
       </div>
     </div>
   </div>
